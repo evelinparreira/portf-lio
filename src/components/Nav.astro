@@ -44,4 +44,78 @@ import { linkedin } from "../data/about";
     >
       <span class="ham-line block w-6 h-0.5 bg-navy transition-all duration-300"></span>
       <span class="ham-line block w-6 h-0.5 bg-navy transition-all duration-300"></span>
-      <span cl
+      <span class="ham-line block w-6 h-0.5 bg-navy transition-all duration-300"></span>
+    </button>
+
+  </div>
+
+  <!-- Mobile menu -->
+  <div
+    id="nav-mobile-menu"
+    class="md:hidden hidden absolute top-full left-0 right-0 bg-bg/95 backdrop-blur-md border-b border-border shadow-lg"
+  >
+    <nav class="flex flex-col px-6 py-4 gap-1" aria-label="Menu mobile">
+      <a href="#sobre" class="mobile-nav-link" data-mobile-link>Sobre</a>
+      <a href="#jornada" class="mobile-nav-link" data-mobile-link>Jornada</a>
+      <a href="#cases" class="mobile-nav-link" data-mobile-link>Cases</a>
+      <a href="/case-estudos/emanapay" class="mobile-nav-link flex items-center gap-2" data-mobile-link>
+        Lab
+        <span class="text-[0.55rem] font-bold uppercase tracking-widest bg-lime text-navy px-1.5 py-0.5 rounded-full leading-none">novo</span>
+      </a>
+      <a href={linkedin} target="_blank" rel="noopener noreferrer" class="mobile-nav-link">LinkedIn ↗</a>
+    </nav>
+  </div>
+
+</header>
+
+<style>
+  .mobile-nav-link {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--color-navy);
+    text-decoration: none;
+    padding: 0.625rem 0;
+    border-bottom: 1px solid var(--color-border);
+    transition: color 0.2s;
+  }
+  .mobile-nav-link:last-child { border-bottom: none; }
+  .mobile-nav-link:hover { color: var(--color-brown); }
+  /* Hamburger open state */
+  .nav-open .ham-line:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .nav-open .ham-line:nth-child(2) { opacity: 0; }
+  .nav-open .ham-line:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+</style>
+
+<script>
+  const nav = document.getElementById("nav")!;
+  const hamburger = document.getElementById("nav-hamburger")!;
+  const mobileMenu = document.getElementById("nav-mobile-menu")!;
+
+  // Scroll style
+  function updateNav() {
+    if (window.scrollY > 40) {
+      nav.classList.add("bg-bg/90", "backdrop-blur-md", "shadow-sm", "border-b", "border-border");
+    } else {
+      nav.classList.remove("bg-bg/90", "backdrop-blur-md", "shadow-sm", "border-b", "border-border");
+    }
+  }
+  window.addEventListener("scroll", updateNav, { passive: true });
+  updateNav();
+
+  // Hamburger toggle
+  hamburger.addEventListener("click", () => {
+    const isOpen = !mobileMenu.classList.contains("hidden");
+    mobileMenu.classList.toggle("hidden", isOpen);
+    hamburger.classList.toggle("nav-open", !isOpen);
+    hamburger.setAttribute("aria-expanded", String(!isOpen));
+  });
+
+  // Close on link click
+  document.querySelectorAll("[data-mobile-link]").forEach(link => {
+    link.addEventListener("click", () => {
+      mobileMenu.classList.add("hidden");
+      hamburger.classList.remove("nav-open");
+      hamburger.setAttribute("aria-expanded", "false");
+    });
+  });
+</script>

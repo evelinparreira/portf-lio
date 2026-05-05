@@ -89,4 +89,7 @@ import { bio } from "../data/about";
   const fallback = document.getElementById("hero-photo-fallback");
   if (photo && fallback) {
     const hide = () => { fallback.style.display = "none"; };
-    if (pho
+    if (photo.complete && photo.naturalWidth > 0) hide();
+    else photo.addEventListener("load", hide);
+  }
+</script>

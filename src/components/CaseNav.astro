@@ -35,4 +35,14 @@ const next = cases[(idx + 1) % cases.length];
     <a href={`/cases/${next.id}`} class="group flex flex-col gap-1 max-w-[45%] text-right ml-auto">
       <span class="flex items-center justify-end gap-1.5 text-[0.68rem] font-medium text-text-muted uppercase tracking-widest group-hover:text-navy transition-colors">
         Próximo
-        
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+          <path d="M3 6h6M7 3l2 3-2 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span class="text-[0.875rem] font-medium text-navy leading-snug group-hover:underline underline-offset-2 decoration-navy/30">
+        {next.data.title}
+      </span>
+    </a>
+
+  </div>
+</nav>
