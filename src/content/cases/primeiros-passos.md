@@ -81,10 +81,7 @@ impactCategories:
       - "Crescimento consistente na base de candidatos"
 
 images:
-  - src: "/photos/primeiros passos/corpo case/Recorte portifolio.png"
-    alt: "Programa Primeiros Passos — visão da plataforma de aprendizagem"
-    span: "half"
-  - src: "/photos/primeiros passos/corpo case/Recorte portifolio (1).png"
-    alt: "Programa Primeiros Passos — detalhe da jornada"
-    span: "half"
-  - src: "/photos/primeir
+  - src: "/photos/primeiros passos/corpo case/foto primeiros passos.jpg"
+    alt: "Turma do Programa Primeiros Passos"
+    span: "full"
+---

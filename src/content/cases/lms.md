@@ -68,3 +68,5 @@ impactCategories:
       - "Manutenção de compliance regulatório"
       - "Continuidade de auditorias e onboarding"
       - "Preservação do acesso a conteúdos críticos"
+
+---

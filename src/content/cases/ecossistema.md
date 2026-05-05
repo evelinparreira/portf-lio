@@ -83,3 +83,5 @@ impactCategories:
       - "+50 ações de aprendizagem realizadas"
       - "Menções espontâneas em pesquisas de clima"
       - "Product-market fit interno consolidado"
+
+---

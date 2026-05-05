@@ -68,7 +68,6 @@ impactCategories:
       - "Maior abertura para conversas presenciais"
       - "Feedback contínuo entre líderes e times"
       - "Confiança recuperada na ferramenta"
-impactText: "O problema não estava na disposição dos colaboradores em participar, mas na combinação de fricção operacional, ausência de feedback e baixa confiança no processo. Ao tratar a pesquisa como um produto, foi possível aumentar adoção, reduzir custos e transformar respostas em decisões reais."
 
 draft: false
 ---

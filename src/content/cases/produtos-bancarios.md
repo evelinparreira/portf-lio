@@ -69,3 +69,5 @@ impactCategories:
       - "Comunidade de aprendizagem criada entre participantes"
       - "Conteúdo de negócio descentralizado e acessível"
       - "Facilitadores internos capacitados para sustentação"
+
+---
