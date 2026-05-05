@@ -1,12 +1,6 @@
 @import "tailwindcss";
 
 /* ─── Fade-up animation system ──────────────────────────────────────── */
-/*
-  Strategy: JS adds class `js` to <html> before first paint.
-  Without JS, .fade-up elements are fully visible (no opacity:0 ever applied).
-  With JS, opacity:0 + translateY are set, then .is-visible triggers transition.
-  After transition ends, JS removes the classes to restore normal hover behavior.
-*/
 html.js .fade-up {
   opacity: 0;
   transform: translateY(28px);
@@ -259,6 +253,4 @@ html.js .fade-up.is-visible {
 @media (max-width: 768px) {
   .experiences-grid { grid-template-columns: 1fr; }
   .nav-logo-eve { font-size: 24px; letter-spacing: 2px; }
-}
-2px; }
 }
