@@ -1,0 +1,509 @@
+---
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import BaseLayout from "./BaseLayout.astro";
+import CaseNav from "../components/CaseNav.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  entry: CollectionEntry<"cases">;
+}
+
+const { entry } = Astro.props;
+const {
+  title, subtitle, categories, cover, metrics, teaser,
+  contextText, problemText,
+  discoveryIntro, discoveryMethods, discoveryItems,
+  solutionTitle, solutionIntro, solutionItems, solutionDecisions,
+  iterationItems, evolutionWaves,
+  myRoleText, myRoleItems,
+  impactCategories, impactText,
+  images,
+  externalLinks,
+} = entry.data;
+
+const allCases = (await getCollection("cases", ({ data }) => !data.draft))
+  .sort((a, b) => a.data.order - b.data.order);
+
+// Gera número de seção formatado
+let sectionCounter = 0;
+const nextSection = () => String(++sectionCounter).padStart(2, "0");
+---
+
+<BaseLayout title={`${title} — Evelin Parreira`} description={teaser} ogImage={cover}>
+
+  <!-- ─── Topbar fixa ───────────────────────────────────────────── -->
+  <header class="fixed top-0 left-0 right-0 z-50 h-16 bg-bg/90 backdrop-blur-md border-b border-border flex items-center px-6">
+    <div class="max-w-4xl mx-auto w-full flex items-center justify-between">
+      <a href="/#cases" class="flex items-center gap-2 text-[0.82rem] font-semibold text-navy hover:gap-3 transition-all duration-200">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Voltar ao portfólio
+      </a>
+      <a href="/" class="nav-logo-eve" style="font-size: 22px; letter-spacing: 3px;" aria-label="Home">EVE</a>
+      <span class="bg-navy text-lime text-[0.62rem] font-bold px-3 py-1 rounded-full tracking-widest uppercase">Case</span>
+    </div>
+  </header>
+
+  <!-- ─── Hero navy ─────────────────────────────────────────────── -->
+  <div class="bg-navy pt-32 pb-16 px-6">
+    <div class="max-w-[720px] mx-auto">
+      <div class="flex flex-wrap gap-2 mb-4">
+        {categories.map((cat) => (
+          <span class="text-[0.6rem] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-lime/30 text-lime/80">
+            {cat}
+          </span>
+        ))}
+      </div>
+      <h1 class="font-display text-3xl sm:text-4xl lg:text-[2.75rem] text-bg leading-tight mb-4 tracking-tight">
+        {title}
+      </h1>
+      {subtitle && (
+        <p class="text-bg/65 text-base sm:text-lg leading-relaxed mb-10 max-w-xl">{subtitle}</p>
+      )}
+      <div class="flex flex-wrap gap-px bg-white/10 rounded-2xl overflow-hidden mt-8">
+        {metrics.map((m) => (
+          <div class="flex-1 min-w-[7rem] bg-navy px-5 py-4 border border-white/10">
+            <p class="font-bold text-lime text-2xl leading-none mb-1">{m.value}</p>
+            <p class="text-bg/55 text-xs leading-snug uppercase tracking-wide">{m.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Corpo do case ─────────────────────────────────────────── -->
+  <div class="max-w-[720px] mx-auto px-6 py-14 space-y-14">
+
+    <!-- 01 — Contexto -->
+    {contextText && (
+      <section>
+        <p class="section-label">{nextSection()} — Contexto</p>
+        <p class="prose-p">{contextText}</p>
+      </section>
+    )}
+
+    <!-- 02 — Problema -->
+    {problemText && (
+      <section>
+        <p class="section-label">{nextSection()} — Problema</p>
+        <blockquote class="problem-box">
+          <p>{problemText}</p>
+        </blockquote>
+      </section>
+    )}
+
+    <!-- 03 — Discovery -->
+    {(discoveryIntro || discoveryMethods || discoveryItems) && (
+      <section>
+        <p class="section-label">{nextSection()} — Discovery</p>
+
+        {discoveryIntro && <p class="prose-p">{discoveryIntro}</p>}
+
+        {discoveryMethods && discoveryMethods.length > 0 && (
+          <div class="mt-4">
+            <p class="subsection-label">Métodos</p>
+            <ul class="methods-list">
+              {discoveryMethods.map((m) => <li>{m}</li>)}
+            </ul>
+          </div>
+        )}
+
+        {discoveryItems && discoveryItems.length > 0 && (
+          <div class="mt-8">
+            <p class="subsection-label">Principais problemas identificados</p>
+            <div class="cards-grid mt-4">
+              {discoveryItems.map((item, idx) => (
+                <div class="card">
+                  <p class="card-number">{String(idx + 1).padStart(2, "0")}</p>
+                  <h3 class="card-title">{item.title}</h3>
+                  <p class="card-desc">{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </section>
+    )}
+
+    <!-- 04 — Solução -->
+    {(solutionItems || solutionIntro) && (
+      <section>
+        <p class="section-label">{nextSection()} — Solução</p>
+        {solutionTitle && <h2 class="section-heading">{solutionTitle}</h2>}
+        {solutionIntro && <p class="prose-p">{solutionIntro}</p>}
+
+        {solutionItems && solutionItems.length > 0 && (
+          <div class="cards-grid mt-6">
+            {solutionItems.map((item) => (
+              <div class="card">
+                <h3 class="card-title">{item.title}</h3>
+                <p class="card-desc">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {solutionDecisions && solutionDecisions.length > 0 && (
+          <div class="mt-8">
+            <p class="subsection-label">Decisões-chave</p>
+            <ul class="methods-list mt-3">
+              {solutionDecisions.map((d) => <li>{d}</li>)}
+            </ul>
+          </div>
+        )}
+
+        {iterationItems && iterationItems.length > 0 && (
+          <div class="mt-8">
+            <p class="subsection-label">Iteração</p>
+            <ul class="methods-list mt-3">
+              {iterationItems.map((i) => <li>{i}</li>)}
+            </ul>
+          </div>
+        )}
+      </section>
+    )}
+
+    <!-- 05 — Evolução em ondas (ecossistema) -->
+    {evolutionWaves && evolutionWaves.length > 0 && (
+      <section>
+        <p class="section-label">{nextSection()} — Evolução</p>
+        <h2 class="section-heading">Construção em ondas</h2>
+        <div class="waves-grid mt-6">
+          {evolutionWaves.map((w) => (
+            <div class="wave-item">
+              <p class="wave-year">{w.year}</p>
+              <p class="card-desc">{w.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Minha atuação -->
+    {(myRoleText || myRoleItems) && (
+      <section>
+        <p class="section-label">{nextSection()} — Minha atuação</p>
+        {myRoleText && <p class="prose-p">{myRoleText}</p>}
+        {myRoleItems && myRoleItems.length > 0 && (
+          <ul class="methods-list mt-3">
+            {myRoleItems.map((r) => <li>{r}</li>)}
+          </ul>
+        )}
+      </section>
+    )}
+
+    <!-- Impacto -->
+    {(impactCategories || impactText) && (
+      <section>
+        <p class="section-label">{nextSection()} — Impacto</p>
+
+        {impactCategories && impactCategories.length > 0 && (
+          <div class="impact-grid mt-4">
+            {impactCategories.map((cat, i) => (
+              <div class:list={["impact-col", i > 0 && "impact-col-border"]}>
+                <p class="impact-label">{cat.label}</p>
+                <ul class="space-y-2.5">
+                  {cat.items.map((item) => (
+                    <li class="flex items-start gap-2.5">
+                      <span class="w-1.5 h-1.5 rounded-full bg-lime flex-shrink-0 mt-[0.4rem]" aria-hidden="true"></span>
+                      <span class="text-navy text-sm leading-relaxed">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {impactText && (
+          <p class="prose-p mt-8 border-l-2 border-lime pl-4 text-text-muted italic">
+            {impactText}
+          </p>
+        )}
+      </section>
+    )}
+
+    <!-- Imagens do case -->
+    {images && images.length > 0 && (
+      <section>
+        <div class="images-grid">
+          {images.map((img) => (
+            <figure class:list={[img.span === "full" ? "img-full" : "img-half"]}>
+              <img src={img.src} alt={img.alt} loading="lazy" />
+              {img.caption && (
+                <figcaption>{img.caption}</figcaption>
+              )}
+            </figure>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Links externos -->
+    {externalLinks && externalLinks.length > 0 && (
+      <section>
+        <p class="section-label">Referências</p>
+        <div class="flex flex-col gap-2 mt-4">
+          {externalLinks.map((link) => (
+            <a
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-3 px-4 py-3 rounded-xl border border-border bg-bg-card hover:border-navy hover:bg-navy/5 transition-colors group"
+            >
+              <span class="text-lg" aria-hidden="true">{link.type === "video" ? "▶" : "↗"}</span>
+              <span class="text-sm font-medium text-navy group-hover:underline">{link.title}</span>
+              <span class="ml-auto text-xs text-text-muted">
+                {link.url.replace(/^https?:\/\//, "").split("/")[0]}
+              </span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+  </div>
+
+  <!-- ─── Navegação anterior / próximo ─────────────────────────── -->
+  <div class="bg-bg">
+    <CaseNav currentId={entry.id} cases={allCases} />
+  </div>
+
+  <!-- ─── Footer ──────────────────────────────────────────────────── -->
+  <Footer />
+
+</BaseLayout>
+
+<style>
+  /* ─── Labels de seção ──────────────────────────────────────────── */
+  .section-label {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    color: var(--color-navy);
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+    position: relative;
+    padding-top: 1.125rem;
+  }
+  .section-label::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1.75rem;
+    height: 2px;
+    background: var(--color-lime);
+  }
+  .subsection-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-brown);
+    margin-bottom: 0.5rem;
+  }
+  .section-heading {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--color-brown);
+    letter-spacing: -0.01em;
+    margin-bottom: 0.75rem;
+    font-style: italic;
+  }
+
+  /* ─── Texto padrão ─────────────────────────────────────────────── */
+  .prose-p {
+    color: var(--color-text);
+    line-height: 1.8;
+    font-size: 0.9875rem;
+  }
+
+  /* ─── Problema em destaque ─────────────────────────────────────── */
+  .problem-box {
+    border-left: 3px solid var(--color-lime);
+    background: color-mix(in srgb, var(--color-lime) 6%, transparent);
+    padding: 1.25rem 1.5rem;
+    border-radius: 0 0.75rem 0.75rem 0;
+  }
+  .problem-box p {
+    color: var(--color-navy);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  /* ─── Lista de métodos ─────────────────────────────────────────── */
+  .methods-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .methods-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+  .methods-list li::before {
+    content: "·";
+    color: var(--color-lime);
+    font-weight: 900;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    line-height: 1.4;
+  }
+
+  /* ─── Grid de cards (discovery + solução) ──────────────────────── */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  @media (max-width: 560px) {
+    .cards-grid { grid-template-columns: 1fr; }
+  }
+
+  .card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1.375rem;
+  }
+  .card-number {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-brown);
+    margin-bottom: 0.625rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .card-title {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--color-navy);
+    margin-bottom: 0.5rem;
+    line-height: 1.35;
+  }
+  .card-desc {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    line-height: 1.65;
+  }
+
+  /* ─── Ondas de evolução (ecossistema) ─────────────────────────── */
+  .waves-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  @media (max-width: 560px) {
+    .waves-grid { grid-template-columns: 1fr; }
+  }
+  .wave-item {
+    border-left: 2px solid var(--color-lime);
+    padding: 0.875rem 1rem;
+    background: var(--color-bg-card);
+    border-radius: 0 8px 8px 0;
+  }
+  .wave-year {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--color-navy);
+    font-weight: 700;
+    margin-bottom: 0.375rem;
+  }
+
+  /* ─── Grid de impacto ──────────────────────────────────────────── */
+  .impact-grid {
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  @media (max-width: 640px) {
+    .impact-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+  .impact-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .impact-col-border {
+    border-left: 1px solid var(--color-border);
+    padding-left: 2rem;
+  }
+  @media (max-width: 640px) {
+    .impact-col-border {
+      border-left: none;
+      border-top: 1px solid var(--color-border);
+      padding-left: 0;
+      padding-top: 1.5rem;
+    }
+  }
+  .impact-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-brown);
+    margin-bottom: 1rem;
+  }
+
+  /* ─── Grid de imagens ──────────────────────────────────────────── */
+  .images-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+  .images-grid figure {
+    margin: 0;
+  }
+  .img-full {
+    grid-column: span 2;
+  }
+  .images-grid img {
+    display: block;
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--color-border);
+    object-fit: cover;
+  }
+  .img-full img {
+    height: 320px;
+  }
+  .img-half img {
+    height: 220px;
+  }
+  .images-grid figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    text-align: center;
+    line-height: 1.5;
+  }
+  @media (max-width: 560px) {
+    .images-grid {
+      grid-template-columns: 1fr;
+    }
+    .img-full,
+    .img-half {
+      grid-column: span 1;
+    }
+    .img-full img,
+    .img-half img {
+      height: 200px;
+    }
+  }
+</style>

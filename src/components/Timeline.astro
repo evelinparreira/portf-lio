@@ -1,0 +1,185 @@
+---
+import { timeline } from "../data/timeline";
+---
+
+<section
+  id="jornada"
+  class="py-24 bg-bg"
+  aria-labelledby="timeline-title"
+>
+  <div class="max-w-7xl mx-auto px-6">
+
+    <p class="text-xs font-semibold tracking-widest uppercase text-lime mb-3" aria-hidden="true">
+      Trajetória
+    </p>
+    <h2 id="timeline-title" class="font-display text-4xl lg:text-5xl text-navy mb-12">
+      Minha Jornada
+    </h2>
+
+    <div class="relative">
+      <div
+        id="timeline-track"
+        class="flex gap-3 overflow-x-auto snap-x snap-mandatory pb-4 -mx-6 px-6 scroll-smooth"
+        style="scrollbar-width: none;"
+        role="list"
+        aria-label="Linha do tempo de experiências"
+      >
+        {timeline.map((entry, i) => (
+          <article
+            role="listitem"
+            data-index={i}
+            class:list={[
+              "timeline-card snap-start flex-shrink-0 cursor-pointer rounded-xl p-5 transition-all duration-300 w-64",
+              i === 0 ? "bg-navy is-active" : "bg-bg-card border border-border",
+            ]}
+            aria-current={i === 0 ? "true" : "false"}
+            tabindex="0"
+          >
+            <!-- Year -->
+            <p
+              class:list={[
+                "text-5xl font-bold leading-none mb-3 select-none",
+                i === 0 ? "text-lime" : "text-navy/20",
+              ]}
+              aria-hidden="true"
+            >
+              {entry.year}
+            </p>
+
+            <h3 class:list={[
+              "text-sm font-semibold leading-snug mb-1",
+              i === 0 ? "text-bg" : "text-navy",
+            ]}>
+              {entry.role}
+            </h3>
+
+            <p class:list={[
+              "text-xs uppercase tracking-wider mb-0",
+              i === 0 ? "text-lime/80" : "text-text-muted",
+            ]}>
+              {entry.period ?? entry.year} · {entry.company}
+            </p>
+
+            <!-- Bullet items — visíveis só no card ativo -->
+            <ul
+              class:list={[
+                "mt-4 space-y-2 text-xs leading-relaxed",
+                i === 0 ? "block text-bg/75" : "hidden text-text-muted",
+              ]}
+            >
+              {entry.items.map((item) => (
+                <li class="flex gap-2 items-start">
+                  <span
+                    class:list={["mt-1 w-1 h-1 rounded-full flex-shrink-0", i === 0 ? "bg-lime" : "bg-navy/30"]}
+                    aria-hidden="true"
+                  ></span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+
+      <!-- Controles -->
+      <div class="flex items-center gap-3 mt-5">
+        <button
+          id="timeline-prev"
+          class="w-9 h-9 rounded-full border border-navy/30 text-navy flex items-center justify-center hover:border-lime hover:text-lime transition-colors disabled:opacity-25 disabled:cursor-not-allowed text-sm"
+          aria-label="Card anterior"
+          disabled
+        >←</button>
+        <button
+          id="timeline-next"
+          class="w-9 h-9 rounded-full border border-navy/30 text-navy flex items-center justify-center hover:border-lime hover:text-lime transition-colors disabled:opacity-25 disabled:cursor-not-allowed text-sm"
+          aria-label="Próximo card"
+        >→</button>
+
+        <div class="flex gap-2 ml-2" role="tablist" aria-label="Indicadores">
+          {timeline.map((entry, i) => (
+            <button
+              role="tab"
+              data-dot={i}
+              class:list={[
+                "h-1.5 rounded-full transition-all duration-300",
+                i === 0 ? "bg-lime w-5" : "bg-navy/20 w-1.5",
+              ]}
+              aria-label={`Ir para ${entry.year}`}
+              aria-selected={i === 0 ? "true" : "false"}
+            ></button>
+          ))}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const track = document.getElementById("timeline-track")!;
+  const cards = Array.from(track.querySelectorAll<HTMLElement>(".timeline-card"));
+  const dots = Array.from(document.querySelectorAll<HTMLElement>("[data-dot]"));
+  const prevBtn = document.getElementById("timeline-prev") as HTMLButtonElement;
+  const nextBtn = document.getElementById("timeline-next") as HTMLButtonElement;
+  let active = 0;
+
+  function activateCard(index: number) {
+    cards.forEach((card, i) => {
+      const on = i === index;
+      card.classList.toggle("bg-navy", on);
+      card.classList.toggle("is-active", on);
+      card.classList.toggle("bg-bg-card", !on);
+      card.classList.toggle("border", !on);
+      card.classList.toggle("border-border", !on);
+      card.setAttribute("aria-current", String(on));
+
+      const year = card.querySelector<HTMLElement>("p:first-child")!;
+      year.classList.toggle("text-lime", on);
+      year.classList.toggle("text-navy/20", !on);
+
+      const h3 = card.querySelector("h3")!;
+      h3.classList.toggle("text-bg", on);
+      h3.classList.toggle("text-navy", !on);
+
+      const sub = card.querySelector<HTMLElement>("p.text-xs")!;
+      sub.classList.toggle("text-lime/80", on);
+      sub.classList.toggle("text-text-muted", !on);
+
+      const ul = card.querySelector("ul")!;
+      ul.classList.toggle("hidden", !on);
+      ul.classList.toggle("block", on);
+      ul.classList.toggle("text-bg/75", on);
+      ul.classList.toggle("text-text-muted", !on);
+
+      card.querySelectorAll<HTMLElement>("li span:first-child").forEach((dot) => {
+        dot.classList.toggle("bg-lime", on);
+        dot.classList.toggle("bg-navy/30", !on);
+      });
+    });
+
+    dots.forEach((d, i) => {
+      const on = i === index;
+      d.classList.toggle("bg-lime", on);
+      d.classList.toggle("w-5", on);
+      d.classList.toggle("bg-navy/20", !on);
+      d.classList.toggle("w-1.5", !on);
+      d.setAttribute("aria-selected", String(on));
+    });
+
+    prevBtn.disabled = index === 0;
+    nextBtn.disabled = index === cards.length - 1;
+    active = index;
+    cards[index].scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+  }
+
+  cards.forEach((card, i) => {
+    card.addEventListener("click", () => activateCard(i));
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); activateCard(i); }
+    });
+  });
+
+  dots.forEach((dot, i) => dot.addEventListener("click", () => activateCard(i)));
+  prevBtn.addEventListener("click", () => { if (active > 0) activateCard(active - 1); });
+  nextBtn.addEventListener("click", () => { if (active < cards.length - 1) activateCard(active + 1); });
+</script>

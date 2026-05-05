@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create *)",
+      "PowerShell(Get-Command node -ErrorAction SilentlyContinue; Get-Command npm -ErrorAction SilentlyContinue; $env:PATH -split ';' | Where-Object { $_ -match 'node|npm' })",
+      "PowerShell($env:PATH)",
+      "PowerShell($env:PATH = [System.Environment]::GetEnvironmentVariable\\(\"PATH\", \"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"PATH\", \"User\"\\); node --version; npm --version)",
+      "PowerShell($env:PATH = [System.Environment]::GetEnvironmentVariable\\(\"PATH\", \"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"PATH\", \"User\"\\); $nodePath = \\(Get-Command node\\).Source | Split-Path; $npmCmd = Join-Path $nodePath \"npm.cmd\"; & $npmCmd --version)",
+      "mcp__Claude_Preview__preview_start",
+      "PowerShell($env:PATH = [System.Environment]::GetEnvironmentVariable\\(\"PATH\",\"Machine\"\\)+\";\"+[System.Environment]::GetEnvironmentVariable\\(\"PATH\",\"User\"\\); \\(Get-Command node\\).Source | Split-Path)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "Bash(npm run *)",
+      "Bash(npx astro *)"
+    ]
+  }
+}

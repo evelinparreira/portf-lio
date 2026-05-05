@@ -1,0 +1,955 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Footer from "../../components/Footer.astro";
+---
+
+<BaseLayout
+  title="EmanaPay — Case de Estudo · Evelin Parreira"
+  description="Redesenho do Espaço Digital do EmanaPay para consultoras Natura: discovery, pesquisa, personas e estratégia de MVP."
+>
+
+  <!-- ─── Topbar ─────────────────────────────────────────────────── -->
+  <header class="fixed top-0 left-0 right-0 z-50 h-16 bg-bg/90 backdrop-blur-md border-b border-border flex items-center px-6">
+    <div class="max-w-5xl mx-auto w-full flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2 text-[0.82rem] font-semibold text-navy hover:gap-3 transition-all duration-200">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Voltar ao portfólio
+      </a>
+      <a href="/" class="nav-logo-eve" style="font-size: 22px; letter-spacing: 3px;">EVE</a>
+      <span class="bg-lime text-navy text-[0.62rem] font-bold px-3 py-1 rounded-full tracking-widest uppercase">Lab</span>
+    </div>
+  </header>
+
+  <!-- ─── Hero ──────────────────────────────────────────────────── -->
+  <div class="bg-navy pt-32 pb-20 px-6">
+    <div class="max-w-[780px] mx-auto">
+
+      <div class="flex flex-wrap gap-2 mb-5">
+        <span class="badge-hero">UX Research</span>
+        <span class="badge-hero">Product Discovery</span>
+        <span class="badge-hero">MVP</span>
+        <span class="badge-hero">Fintech</span>
+        <span class="badge-hero">Prototipagem</span>
+        <span class="badge-hero">Pós-Graduação</span>
+      </div>
+
+      <h1 class="font-display text-3xl sm:text-4xl lg:text-[2.75rem] text-bg leading-tight mb-4 tracking-tight">
+        EmanaPay — Redesenho do Espaço Digital
+      </h1>
+      <p class="text-bg/65 text-base sm:text-lg leading-relaxed max-w-2xl">
+        O EmanaPay foi criado exclusivamente para as consultoras da Natura — mas as pesquisadas não o usam para controle financeiro. Este estudo investiga o porquê, mapeia o que impede a adoção e propõe uma diferenciação via Espaço Digital.
+      </p>
+    </div>
+  </div>
+
+  <!-- ─── Corpo ─────────────────────────────────────────────────── -->
+  <div class="case-study-body">
+
+    <!-- 01 — Contexto -->
+    <div class="cs-wrap-wide cs-gap">
+      <section>
+        <p class="cs-label">01 — Contexto</p>
+        <div class="cs-two-col">
+          <div>
+            <p class="cs-prose">
+              Este projeto está sendo desenvolvido como <strong>Tech Challenge de pós-graduação para a FIAP</strong>.
+              O EmanaPay foi escolhido como objeto de estudo pelo seu potencial de solução — um banco digital
+              com uma base de usuárias enorme, produto exclusivo e diferenciado, mas com oportunidades claras
+              de evolução.
+            </p>
+            <p class="cs-prose mt-4">
+              O <strong>EmanaPay</strong> é um banco digital verticalizado, integrado ao ecossistema Natura —
+              uma das maiores multinacionais de cosméticos do Brasil. Diferente de bancos convencionais,
+              foi desenhado exclusivamente para as <strong>consultoras da Natura</strong>: mais de 3 milhões de
+              mulheres na América Latina que vendem produtos por venda direta.
+            </p>
+            <p class="cs-prose mt-4">
+              Ao realizar análise de mercado e produto, encontramos duas frentes de oportunidade:
+              <strong>estabilização de fricções críticas</strong>, que comprometem a renda da consultora, e
+              <strong>diferenciação</strong>, explorando funcionalidades exclusivas do app. Em uma atuação real,
+              a escolha seria por estabilizar primeiro. Como é um case de estudo, optamos pela diferenciação
+              — para explorar ao máximo o ciclo de Discovery e Delivery.
+            </p>
+          </div>
+          <aside class="cs-aside">
+            <div class="cs-aside-card">
+              <p class="cs-aside-eyebrow">Ecossistema Natura</p>
+              <div class="flex flex-col gap-3 mt-2">
+                <div class="flex items-center gap-3">
+                  <span class="cs-stat-num">+3M</span>
+                  <span class="cs-stat-label">consultoras na América Latina</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <span class="cs-stat-num">5+</span>
+                  <span class="cs-stat-label">décadas de atuação no mercado</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <span class="cs-stat-num">FIAP</span>
+                  <span class="cs-stat-label">Tech Challenge — pós-graduação</span>
+                </div>
+              </div>
+            </div>
+            <div class="cs-aside-choice mt-3">
+              <p class="cs-aside-eyebrow" style="color: rgba(184,212,48,0.85);">Escolha de abordagem</p>
+              <div class="cs-choice-row">
+                <div class="cs-choice-item cs-choice-real">
+                  <p class="cs-choice-label">Produto real</p>
+                  <p class="cs-choice-value">Estabilização</p>
+                </div>
+                <div class="cs-choice-divider">→</div>
+                <div class="cs-choice-item cs-choice-study">
+                  <p class="cs-choice-label">Este case</p>
+                  <p class="cs-choice-value">Diferenciação</p>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </div>
+
+    <!-- ─── Phase divider: Discovery ──────────────────────────────── -->
+    <div class="cs-phase-divider">
+      <div class="cs-phase-line"></div>
+      <span class="cs-phase-label">Discovery</span>
+      <div class="cs-phase-line"></div>
+    </div>
+
+    <!-- 02 — Análise de Mercado -->
+    <div class="cs-wrap-wide cs-gap">
+      <section>
+        <p class="cs-label">02 — Análise de Mercado</p>
+        <p class="cs-prose mb-6">
+          O EmanaPay possui <strong>taxas diferenciadas e vantajosas</strong>, mas entrega funcionalidades
+          iguais ou inferiores aos apps que as consultoras já usam no dia a dia. Num mercado onde
+          Nubank e Mercado Pago dominam a preferência por experiência e praticidade, ter taxas melhores
+          não é suficiente para garantir adoção.
+        </p>
+
+        <div class="cs-market-table">
+          <div class="cs-market-header">
+            <div></div>
+            <div class="cs-market-col-label">EmanaPay</div>
+            <div class="cs-market-col-label">Nubank</div>
+            <div class="cs-market-col-label">Mercado Pago</div>
+          </div>
+          <div class="cs-market-row">
+            <div class="cs-market-feature">Taxas</div>
+            <div class="cs-market-cell cs-cell-win">✦ Diferenciadas</div>
+            <div class="cs-market-cell">Padrão</div>
+            <div class="cs-market-cell">Padrão</div>
+          </div>
+          <div class="cs-market-row">
+            <div class="cs-market-feature">Funcionalidades bancárias</div>
+            <div class="cs-market-cell cs-cell-loss">Inferior</div>
+            <div class="cs-market-cell cs-cell-win">✦ Referência</div>
+            <div class="cs-market-cell cs-cell-win">✦ Referência</div>
+          </div>
+          <div class="cs-market-row">
+            <div class="cs-market-feature">UX / Experiência</div>
+            <div class="cs-market-cell cs-cell-loss">Oportunidade</div>
+            <div class="cs-market-cell cs-cell-win">✦ Referência</div>
+            <div class="cs-market-cell">Boa</div>
+          </div>
+          <div class="cs-market-row cs-market-row-highlight">
+            <div class="cs-market-feature">Educação Financeira</div>
+            <div class="cs-market-cell cs-cell-exclusive">✦ Exclusivo</div>
+            <div class="cs-market-cell cs-cell-no">—</div>
+            <div class="cs-market-cell cs-cell-no">—</div>
+          </div>
+          <div class="cs-market-row cs-market-row-highlight">
+            <div class="cs-market-feature">Espaço Digital (gestão de vendas)</div>
+            <div class="cs-market-cell cs-cell-exclusive">✦ Exclusivo</div>
+            <div class="cs-market-cell cs-cell-no">—</div>
+            <div class="cs-market-cell cs-cell-no">—</div>
+          </div>
+        </div>
+
+        <div class="cs-market-decision mt-6">
+          <p class="cs-market-decision-label">Foco escolhido para este case</p>
+          <p class="cs-market-decision-text">
+            Das duas funcionalidades exclusivas, o <strong>Espaço Digital</strong> foi selecionado por
+            ter conexão direta com a principal dor das consultoras: visibilidade financeira das vendas.
+            Mais potencial de impacto imediato em adoção e retenção.
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <!-- 03 — Personas -->
+    <div class="cs-wrap-wide cs-gap">
+      <section>
+        <p class="cs-label">03 — Personas</p>
+        <p class="cs-prose mb-6">
+          Com base em pesquisa secundária (ABEVD 2023/24 e mapeamento no Instagram) e pesquisa primária
+          quantitativa, mapeamos dois perfis centrais de consultoras Natura:
+        </p>
+        <div class="cs-personas-grid">
+
+          <!-- Persona 1 -->
+          <div class="cs-persona-card">
+            <div class="cs-persona-header">
+              <div class="cs-persona-avatar">JF</div>
+              <div>
+                <h3 class="cs-persona-name">Juliana Ferreira, 26 anos</h3>
+                <p class="cs-persona-tags">Nativa digital · Renda complementar · Classes C/D</p>
+              </div>
+            </div>
+            <blockquote class="cs-persona-quote">
+              "Eu vendo bem, mas no final do mês não sei explicar pra onde foi o dinheiro.
+              Fica tudo junto na mesma conta. Preciso organizar, mas não tenho tempo pra aprender coisa complicada."
+            </blockquote>
+            <div class="cs-persona-cols">
+              <div>
+                <p class="cs-persona-section">Jobs to be done</p>
+                <ul class="cs-persona-list">
+                  <li>Saber quanto pode gastar sem comprometer o estoque</li>
+                  <li>Entender se está realmente lucrando, não só girando dinheiro</li>
+                  <li>Agilidade na gestão sem depender de outro app</li>
+                </ul>
+              </div>
+              <div>
+                <p class="cs-persona-section">Dores</p>
+                <ul class="cs-persona-list cs-persona-list-red">
+                  <li>Dinheiro misturado</li>
+                  <li>Não sabe o lucro real</li>
+                  <li>Abandona apps com curva de aprendizado</li>
+                </ul>
+                <p class="cs-persona-section mt-3">Ganhos desejados</p>
+                <ul class="cs-persona-list cs-persona-list-green">
+                  <li>Sentir controle</li>
+                  <li>Autonomia financeira</li>
+                  <li>Parecer profissional</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Persona 2 -->
+          <div class="cs-persona-card">
+            <div class="cs-persona-header">
+              <div class="cs-persona-avatar cs-persona-avatar-2">RS</div>
+              <div>
+                <h3 class="cs-persona-name">Rosane Santos, 38 anos</h3>
+                <p class="cs-persona-tags">Renda principal · Nível Diamante · WhatsApp Business · Classes C/D/E</p>
+              </div>
+            </div>
+            <blockquote class="cs-persona-quote">
+              "Trabalho todo mês pra não faltar nada em casa, mas sempre chega uma hora que o dinheiro
+              parece que sumiu. Se fosse da Natura, eu confiaria mais."
+            </blockquote>
+            <div class="cs-persona-cols">
+              <div>
+                <p class="cs-persona-section">Jobs to be done</p>
+                <ul class="cs-persona-list">
+                  <li>Separar dinheiro do negócio do da família</li>
+                  <li>Saber quanto reinvestir no próximo pedido</li>
+                  <li>Ter suporte quando não entende</li>
+                </ul>
+              </div>
+              <div>
+                <p class="cs-persona-section">Dores</p>
+                <ul class="cs-persona-list cs-persona-list-red">
+                  <li>Medo de golpe</li>
+                  <li>Nenhum registro digital</li>
+                  <li>Lucro invisível</li>
+                </ul>
+                <p class="cs-persona-section mt-3">Ganhos desejados</p>
+                <ul class="cs-persona-list cs-persona-list-green">
+                  <li>Segurança financeira</li>
+                  <li>Controle real do negócio</li>
+                  <li>Ser vista como empresária</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </div>
+
+    <!-- 04 — Análise Heurística -->
+    <div class="cs-wrap-wide cs-gap">
+      <section>
+        <p class="cs-label">04 — Análise Heurística do Espaço Digital</p>
+        <p class="cs-prose mb-6">
+          Realizamos uma avaliação heurística do EmanaPay com foco no Espaço Digital — a funcionalidade
+          central para gestão das vendas. Encontramos quatro problemas críticos que afetam diretamente
+          a usabilidade e a adoção:
+        </p>
+
+        <div class="cs-heuristic-grid">
+          <div class="cs-card cs-card-warn">
+            <div class="cs-heuristic-icon">🧭</div>
+            <h3 class="cs-card-title">Navegação confusa</h3>
+            <p class="cs-card-desc">
+              A home do EmanaPay tem <strong>15+ funcionalidades</strong> em grid 2×2 sem hierarquia visual.
+              O Espaço Digital fica na <strong>14ª posição</strong>, exigindo um scroll vertical inteiro para ser encontrado.
+            </p>
+          </div>
+          <div class="cs-card cs-card-warn">
+            <div class="cs-heuristic-icon">📦</div>
+            <h3 class="cs-card-title">Espaço Digital sem contexto</h3>
+            <p class="cs-card-desc">
+              Exibe código, valor e status — mas <strong>sem nome do produto, lucro estimado ou custo da venda</strong>.
+              A consultora vê números, mas não consegue interpretar o que está ganhando.
+            </p>
+          </div>
+          <div class="cs-card cs-card-warn">
+            <div class="cs-heuristic-icon">🔍</div>
+            <h3 class="cs-card-title">Filtros sem função de busca</h3>
+            <p class="cs-card-desc">
+              O ícone de filtro não remete a busca. Há muita customização disponível, mas
+              <strong>pouca clareza sobre o que cada opção faz</strong> e como usar.
+            </p>
+          </div>
+          <div class="cs-card cs-card-warn">
+            <div class="cs-heuristic-icon">📄</div>
+            <h3 class="cs-card-title">Relatório pouco acessível</h3>
+            <p class="cs-card-desc">
+              UX Writing técnico — "Defina os parâmetros para a exportação" — e exportação apenas em PDF.
+              Paradoxalmente, <strong>o cálculo de lucro já existe no backend</strong>. Só não aparece na interface.
+            </p>
+          </div>
+        </div>
+
+        <!-- Telas do app -->
+        <p class="cs-subsection-label mt-10 mb-4">Telas do EmanaPay — problemas mapeados</p>
+        <div class="cs-telas-scroll">
+          {[1,2,3,4,5,6,7,8,9,10].map((n) => (
+            <div class="cs-tela-frame">
+              <img
+                src={`/photos/emanapay/telas/${n}.png`}
+                alt={`Tela ${n} do EmanaPay`}
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+
+    <!-- 05 — Fluxo As-Is -->
+    <div class="cs-wrap-wide cs-gap">
+      <section>
+        <p class="cs-label">05 — Fluxo As-Is</p>
+        <p class="cs-prose mb-6">
+          Mapeamos a jornada atual de uma consultora tentando entender quanto ganhou e o que pode
+          fazer com o dinheiro das vendas dentro do app:
+        </p>
+
+        <div class="cs-asis-flow">
+          {[
+            { step: "01", label: "Abre o app para verificar o saldo das vendas", feeling: "Impaciência · Cautela" },
+            { step: "02", label: "Tenta encontrar o Espaço Digital na home — são 15+ ícones em grid sem hierarquia", feeling: "Leve frustração · Desorientação" },
+            { step: "03", label: "Chega ao Espaço Digital após scroll até a 14ª posição", feeling: "Insegurança · \"Estou no lugar certo?\"" },
+            { step: "04", label: "Vê lista de transações: código, valor e status — sem nome do produto ou lucro", feeling: "Confusão · Não entende o que está olhando" },
+            { step: "05", label: "Tenta filtrar ou exportar relatório para entender os ganhos", feeling: "Pressa · UX Writing técnico · Abandona" },
+            { step: "06", label: "Decide o que fazer com o dinheiro sem dados claros", feeling: "Insegurança · Risco de decisão financeira errada" },
+          ].map(j => (
+            <div class="cs-asis-step">
+              <span class="cs-asis-num">{j.step}</span>
+              <div>
+                <p class="cs-asis-action">{j.label}</p>
+                <p class="cs-asis-feel">{j.feeling}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="cs-abandonment-callout mt-6">
+          <div class="cs-abandonment-icon">⚡</div>
+          <div>
+            <p class="cs-abandonment-title">Resultado: exaustão e abandono</p>
+            <p class="cs-abandonment-text">
+              Dentro desse cenário, a consultora simplesmente se cansa. Não teve nenhum insight útil,
+              nenhuma decisão ficou mais fácil. Esse atrito — que se repete toda vez que ela abre o app —
+              <strong>gera abandono no meio do processo ou impede que ela tente de novo.</strong>
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- 06 — Hipóteses -->
+    <div class="cs-wrap-narrow cs-gap">
+      <section>
+        <p class="cs-label">06 — Hipóteses</p>
+        <p class="cs-prose mb-6">
+          Com base na análise heurística e na jornada as-is, levantamos as hipóteses que guiaram
+          a etapa de pesquisa:
+        </p>
+        <div class="cs-hypothesis cs-hypothesis-primary mt-6">
+          <p class="cs-hyp-tag">Hipótese Primária</p>
+          <p class="cs-hyp-text">
+            Consultoras precisam gerenciar o dinheiro das vendas de forma separada e prática,
+            mas não encontram uma solução integrada e simples para isso dentro do seu fluxo de trabalho.
+          </p>
+        </div>
+        <div class="cs-hyp-secondary-grid mt-4">
+          <div class="cs-hypothesis cs-hypothesis-secondary">
+            <p class="cs-hyp-tag">Secundária</p>
+            <p class="cs-hyp-text">Consultoras já utilizam outros apps financeiros e não veem vantagem suficiente em migrar para o EmanaPay como ferramenta principal.</p>
+          </div>
+          <div class="cs-hypothesis cs-hypothesis-secondary">
+            <p class="cs-hyp-tag">Secundária</p>
+            <p class="cs-hyp-text">Quando o EmanaPay não apresenta benefícios claros em relação a apps já utilizados, as consultoras tendem a não adotá-lo ou a abandoná-lo após o primeiro uso.</p>
+          </div>
+          <div class="cs-hypothesis cs-hypothesis-secondary">
+            <p class="cs-hyp-tag">Secundária</p>
+            <p class="cs-hyp-text">A necessidade de aprender a usar um novo app financeiro reduz a adoção do EmanaPay, especialmente entre consultoras com menor familiaridade digital.</p>
+          </div>
+          <div class="cs-hypothesis cs-hypothesis-secondary">
+            <p class="cs-hyp-tag">Secundária</p>
+            <p class="cs-hyp-text">Consultoras com baixo letramento digital utilizam apenas funcionalidades básicas do EmanaPay, limitando seu potencial como ferramenta de gestão financeira.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- 07 — Pesquisa -->
+    <div class="cs-wrap-wide cs-gap">
+      <section>
+        <p class="cs-label">07 — Pesquisa</p>
+
+        <!-- Pesquisas Secundárias -->
+        <p class="cs-subsection-label mb-4">Pesquisas Secundárias</p>
+        <div class="cs-secondary-grid">
+          <div class="cs-secondary-card">
+            <div class="cs-secondary-header">
+              <span class="cs-secondary-source">ABEVD 2023/24</span>
+              <span class="cs-secondary-type">Dados setoriais</span>
+            </div>
+            <div class="cs-secondary-stats">
+              <div class="cs-sec-stat">
+                <span class="cs-sec-num">49,5%</span>
+                <span class="cs-sec-desc">das consultoras têm entre 18 e 29 anos</span>
+              </div>
+              <div class="cs-sec-stat">
+                <span class="cs-sec-num">63,5%</span>
+                <span class="cs-sec-desc">dependem da venda direta como renda principal</span>
+              </div>
+              <div class="cs-sec-stat">
+                <span class="cs-sec-num">80%</span>
+                <span class="cs-sec-desc">vendem via app de mensagens · 71% via redes sociais</span>
+              </div>
+              <div class="cs-sec-stat">
+                <span class="cs-sec-num">#1</span>
+                <span class="cs-sec-desc">motivação é aumento de renda — citada por 58% das consultoras</span>
+              </div>
+            </div>
+          </div>
+          <div class="cs-secondary-card">
+            <div class="cs-secondary-header">
+              <span class="cs-secondary-source">Instagram — 8 consultoras</span>
+              <span class="cs-secondary-type">Mapeamento qualitativo</span>
+            </div>
+            <p class="cs-secondary-desc">
+              Observação de perfis de consultoras ativas para entender padrões de comunicação,
+              estratégias de venda, linguagem usada com clientes e relação com o produto Natura
+              no contexto digital.
+            </p>
+            <div class="cs-secondary-tags">
+              <span class="cs-sec-tag">Comunicação</span>
+              <span class="cs-sec-tag">Estratégias de venda</span>
+              <span class="cs-sec-tag">Linguagem</span>
+              <span class="cs-sec-tag">Relação com produto</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pesquisa Primária -->
+        <p class="cs-subsection-label mt-10 mb-4">Pesquisa Primária Quantitativa</p>
+        <div class="cs-stats-row">
+          <div class="cs-big-stat">
+            <p class="cs-big-num">62,5%</p>
+            <p class="cs-big-desc">sem controle financeiro real — 37,5% misturam tudo, 12,5% só mentalmente</p>
+          </div>
+          <div class="cs-big-stat">
+            <p class="cs-big-num">87,5%</p>
+            <p class="cs-big-desc">já confundiram a origem do dinheiro — dor recorrente, não pontual</p>
+          </div>
+          <div class="cs-big-stat">
+            <p class="cs-big-num">0%</p>
+            <p class="cs-big-desc">usam app financeiro para controle — 50% planilha · 12,5% caderno</p>
+          </div>
+          <div class="cs-big-stat">
+            <p class="cs-big-num">87,5%</p>
+            <p class="cs-big-desc">usariam mais o app se vissem lucro por transação — alto potencial de engajamento</p>
+          </div>
+        </div>
+
+        <!-- Prioridade de valor -->
+        <p class="cs-subsection-label mt-8 mb-3">Prioridade de valor declarada pelas consultoras</p>
+        <div class="cs-insight-row">
+          <div class="cs-insight-card">
+            <p class="cs-insight-rank">#1</p>
+            <p class="cs-insight-title">Lucro por venda</p>
+            <p class="cs-insight-sub">50% apontam como a melhoria mais importante dentro do app</p>
+          </div>
+          <div class="cs-insight-card">
+            <p class="cs-insight-rank">#2</p>
+            <p class="cs-insight-title">Separação de saldo</p>
+            <p class="cs-insight-sub">4,63/5 de relevância — saldo pessoal vs. vendas visivelmente separados</p>
+          </div>
+          <div class="cs-insight-card">
+            <p class="cs-insight-rank">#3</p>
+            <p class="cs-insight-title">Registro de vendas externas</p>
+            <p class="cs-insight-sub">75% usariam se o fluxo for simples — demanda por centralização com baixa fricção</p>
+          </div>
+        </div>
+
+        <!-- Insights consolidados -->
+        <p class="cs-subsection-label mt-10 mb-4">O que os dados revelaram</p>
+        <div class="cs-cards-grid">
+          <div class="cs-card">
+            <p class="cs-card-num">→</p>
+            <h3 class="cs-card-title">Controle existe — mas fora do app</h3>
+            <p class="cs-card-desc">O comportamento de gestão financeira já está consolidado: acontece em planilhas e cadernos. O desafio não é criar o hábito, é migrar o canal.</p>
+          </div>
+          <div class="cs-card">
+            <p class="cs-card-num">→</p>
+            <h3 class="cs-card-title">Mistura de dinheiro gera insegurança</h3>
+            <p class="cs-card-desc">62,5% não separam caixa pessoal do negócio. Sem separação visível, a consultora não sabe se está lucrando — e acaba não confiando no próprio negócio.</p>
+          </div>
+          <div class="cs-card">
+            <p class="cs-card-num">→</p>
+            <h3 class="cs-card-title">Clareza de lucro = engajamento</h3>
+            <p class="cs-card-desc">Consultoras não precisam de mais dados. Precisam entender <strong>quanto estão lucrando</strong>, não só recebendo. A informação já existe no backend — falta chegar na UI.</p>
+          </div>
+        </div>
+
+        <!-- Consolidação -->
+        <div class="cs-consolidation mt-8">
+          <p class="cs-consolidation-eyebrow">Síntese</p>
+          <p class="cs-consolidation-text">
+            Se as consultoras tivessem um Espaço Digital mais completo e ao mesmo tempo simples,
+            isso poderia aumentar a adesão ao app. Se o processo for simples e intuitivo, ela pode
+            substituir planilha ou caderno. E se ela tiver controle financeiro mais intuitivo,
+            isso pode aumentar as vendas dela.
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <!-- 08 — Estratégia de MVP -->
+    <div class="cs-wrap-wide cs-gap">
+      <section>
+        <p class="cs-label">08 — Estratégia de MVP</p>
+        <div class="cs-two-col mt-6">
+          <div>
+            <p class="cs-subsection-label">Decisão de foco</p>
+            <p class="cs-prose mt-2">
+              A estratégia foi <strong>evoluir apenas o Espaço Digital</strong>, sem reorganizar toda
+              a arquitetura do app. Isso mantém a curva de aprendizado baixa para quem já usa o EmanaPay
+              e reduz o risco de entrega.
+            </p>
+            <p class="cs-prose mt-4">
+              <strong>Objetivo:</strong> fazer a consultora usar o Espaço Digital de forma contínua,
+              substituindo cadernos e planilhas pelo próprio app — com navegação simples e
+              menor fricção possível.
+            </p>
+            <p class="cs-prose mt-4">
+              Referências de navegação: <strong>Nubank e Inter</strong> — ações com scroll lateral,
+              destaque visual para funcionalidades diferenciais, e resumo macro imediatamente visível
+              ao entrar no espaço.
+            </p>
+          </div>
+          <div class="flex flex-col gap-3">
+            <div class="cs-mvp-box cs-mvp-in">
+              <p class="cs-mvp-label">✅ Entra no MVP</p>
+              <ul class="cs-mvp-list">
+                <li>Separação de saldo na home</li>
+                <li>Lucro estimado por transação</li>
+                <li>Nome e contexto do produto nas vendas</li>
+                <li>Resumo do ciclo + reinvestimento</li>
+              </ul>
+            </div>
+            <div class="cs-mvp-box cs-mvp-validate">
+              <p class="cs-mvp-label">🔍 Validar antes</p>
+              <ul class="cs-mvp-list">
+                <li>Inclusão de vendas externas</li>
+              </ul>
+            </div>
+            <div class="cs-mvp-box cs-mvp-out">
+              <p class="cs-mvp-label">❌ Fora do MVP</p>
+              <ul class="cs-mvp-list">
+                <li>Reinvestimento de valor</li>
+                <li>Reorganização da arquitetura</li>
+                <li>Funcionalidades de meta financeira</li>
+                <li>Expansão de features bancárias</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ─── Phase divider: Delivery ───────────────────────────────── -->
+    <div class="cs-phase-divider">
+      <div class="cs-phase-line"></div>
+      <span class="cs-phase-label">Delivery</span>
+      <div class="cs-phase-line"></div>
+    </div>
+
+    <!-- 09 — Protótipo -->
+    <div class="cs-wrap-narrow cs-gap">
+      <section>
+        <p class="cs-label">09 — Protótipo</p>
+
+        <div class="cs-delivery-card">
+          <div class="cs-delivery-badge">Em construção</div>
+          <h3 class="cs-delivery-title">Alta fidelidade via Replit · Testes A/B</h3>
+          <p class="cs-delivery-text">
+            Para o desenvolvimento, optamos por um <strong>protótipo navegável em alta fidelidade</strong>
+            construído no Replit. A escolha permite testar diferentes hipóteses de UI com usuárias reais
+            e iterar com velocidade.
+          </p>
+        </div>
+
+        <div class="cs-delivery-notes mt-6">
+          <div class="cs-delivery-note">
+            <span class="cs-note-icon">✦</span>
+            <p><strong>Referências de UI:</strong> Nubank e Inter foram usados como base para as iterações de interface, pela familiaridade das usuárias com esses padrões de navegação.</p>
+          </div>
+          <div class="cs-delivery-note">
+            <span class="cs-note-icon">✦</span>
+            <p><strong>Interface inicial preservada:</strong> optamos por não alterar a tela de entrada do app para não interferir na curva de aprendizado de produto das consultoras nos testes.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  </div>
+
+  <!-- ─── CTA Final ─────────────────────────────────────────────── -->
+  <div class="cs-cta-final">
+    <p class="cs-cta-label">Protótipo disponível</p>
+    <a
+      href="https://emana-pay-digital-1--evelinrocha80.replit.app/home"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="cs-prototype-btn-large"
+    >
+      Ver protótipo
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+
+  <!-- ─── Footer ─────────────────────────────────────────────────── -->
+  <Footer />
+
+</BaseLayout>
+
+<style>
+  /* ─── Layout ───────────────────────────────────────────────────── */
+  .case-study-body { padding-top: 3.5rem; padding-bottom: 2rem; }
+  .cs-wrap-narrow  { max-width: 720px;  margin: 0 auto; padding: 0 1.5rem; }
+  .cs-wrap-wide    { max-width: 1000px; margin: 0 auto; padding: 0 1.5rem; }
+  .cs-gap          { margin-bottom: 4rem; }
+
+  /* ─── Badges hero ──────────────────────────────────────────────── */
+  .badge-hero {
+    font-size: 0.6rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.12em; padding: 0.3rem 0.75rem;
+    border-radius: 100px; border: 1px solid rgba(184,212,48,0.35);
+    color: rgba(184,212,48,0.85);
+  }
+
+  /* ─── Phase divider ────────────────────────────────────────────── */
+  .cs-phase-divider {
+    max-width: 1000px; margin: 0 auto 3.5rem;
+    padding: 0 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .cs-phase-line { flex: 1; height: 1px; background: var(--color-border); }
+  .cs-phase-label {
+    font-size: 0.68rem; font-weight: 800; text-transform: uppercase;
+    letter-spacing: 0.18em; color: var(--color-brown);
+    white-space: nowrap;
+    background: var(--color-bg); padding: 0 0.5rem;
+  }
+
+  /* ─── Labels ───────────────────────────────────────────────────── */
+  .cs-label {
+    font-family: var(--font-display);
+    font-size: 1.75rem; color: var(--color-navy);
+    letter-spacing: -0.025em; line-height: 1.15;
+    margin-bottom: 1.25rem;
+    position: relative; padding-top: 1.125rem;
+  }
+  .cs-label::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 1.75rem; height: 2px; background: var(--color-lime);
+  }
+  .cs-subsection-label {
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--color-brown);
+  }
+  .cs-prose { color: var(--color-text); line-height: 1.8; font-size: 0.9875rem; }
+
+  /* ─── Two-column ───────────────────────────────────────────────── */
+  .cs-two-col { display: grid; grid-template-columns: 1fr 280px; gap: 2rem; align-items: start; }
+  @media (max-width: 720px) { .cs-two-col { grid-template-columns: 1fr; } }
+
+  /* ─── Aside sidebar ────────────────────────────────────────────── */
+  .cs-aside-card {
+    background: var(--color-bg-card); border: 1px solid var(--color-border);
+    border-radius: 14px; padding: 1.25rem;
+  }
+  .cs-aside-choice {
+    background: var(--color-navy); border-radius: 14px; padding: 1.25rem;
+  }
+  .cs-aside-eyebrow {
+    font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--color-brown); margin-bottom: 0.75rem;
+  }
+  .cs-choice-row { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.75rem; }
+  .cs-choice-item { flex: 1; border-radius: 8px; padding: 0.625rem 0.75rem; text-align: center; }
+  .cs-choice-real  { background: rgba(255,255,255,0.08); }
+  .cs-choice-study { background: rgba(184,212,48,0.15); }
+  .cs-choice-label { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(245,243,237,0.45); margin-bottom: 0.25rem; }
+  .cs-choice-value { font-size: 0.82rem; font-weight: 700; color: rgba(245,243,237,0.9); }
+  .cs-choice-study .cs-choice-value { color: rgba(184,212,48,0.95); }
+  .cs-choice-divider { color: rgba(245,243,237,0.3); font-size: 0.9rem; }
+  .cs-aside-body-light { font-size: 0.875rem; color: rgba(245, 243, 237, 0.78); line-height: 1.65; }
+  .cs-stat-num { font-family: var(--font-display); font-size: 1.4rem; color: var(--color-navy); font-weight: 700; min-width: 3rem; line-height: 1; }
+  .cs-stat-label { font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.4; }
+
+  /* ─── Market comparison table ──────────────────────────────────── */
+  .cs-market-table {
+    border: 1px solid var(--color-border); border-radius: 14px; overflow: hidden;
+    font-size: 0.875rem;
+  }
+  .cs-market-header {
+    display: grid; grid-template-columns: 1fr repeat(3, 120px);
+    background: var(--color-navy); padding: 0.625rem 1rem;
+    gap: 0.5rem;
+  }
+  .cs-market-col-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(245,243,237,0.7); text-align: center; }
+  .cs-market-row { display: grid; grid-template-columns: 1fr repeat(3, 120px); gap: 0.5rem; padding: 0.625rem 1rem; border-top: 1px solid var(--color-border); background: var(--color-bg-card); align-items: center; }
+  .cs-market-row-highlight { background: color-mix(in srgb, var(--color-lime) 5%, white); }
+  .cs-market-feature { font-size: 0.85rem; color: var(--color-text); font-weight: 500; }
+  .cs-market-cell { font-size: 0.8rem; text-align: center; color: var(--color-text-muted); padding: 0.25rem 0.5rem; border-radius: 6px; }
+  .cs-cell-win      { color: #2d6a1f; background: rgba(100,180,60,0.1); font-weight: 600; }
+  .cs-cell-loss     { color: #b03a2e; background: rgba(200,80,60,0.08); }
+  .cs-cell-exclusive { color: var(--color-navy); background: rgba(184,212,48,0.25); font-weight: 700; }
+  .cs-cell-no       { color: var(--color-border); }
+  @media (max-width: 600px) {
+    .cs-market-header, .cs-market-row { grid-template-columns: 1fr repeat(3, 80px); }
+    .cs-market-col-label, .cs-market-cell { font-size: 0.68rem; }
+  }
+  .cs-market-decision {
+    background: var(--color-navy); border-radius: 12px; padding: 1.25rem 1.5rem;
+  }
+  .cs-market-decision-label { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-lime); margin-bottom: 0.5rem; opacity: 0.9; }
+  .cs-market-decision-text { font-size: 0.9rem; color: rgba(245,243,237,0.82); line-height: 1.7; }
+
+  /* ─── Heuristic grid (4 cards) ─────────────────────────────────── */
+  .cs-heuristic-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;
+  }
+  @media (max-width: 560px) { .cs-heuristic-grid { grid-template-columns: 1fr; } }
+  .cs-heuristic-icon { font-size: 1.25rem; margin-bottom: 0.625rem; }
+
+  /* ─── Telas do app ─────────────────────────────────────────────── */
+  .cs-telas-scroll {
+    display: flex; gap: 0.75rem;
+    overflow-x: auto; padding-bottom: 0.75rem;
+    scrollbar-width: thin; scrollbar-color: var(--color-border) transparent;
+  }
+  .cs-telas-scroll::-webkit-scrollbar { height: 4px; }
+  .cs-telas-scroll::-webkit-scrollbar-track { background: transparent; }
+  .cs-telas-scroll::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 2px; }
+  .cs-tela-frame {
+    flex-shrink: 0; width: 96px;
+    background: var(--color-navy); border-radius: 14px;
+    overflow: hidden; border: 3px solid var(--color-navy);
+    box-shadow: 0 2px 10px rgba(26,35,50,0.15);
+  }
+  .cs-tela-frame img { display: block; width: 100%; height: 168px; object-fit: cover; object-position: top; border-radius: 11px; }
+
+  /* ─── Cards grid ───────────────────────────────────────────────── */
+  .cs-cards-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  @media (max-width: 560px) { .cs-cards-grid { grid-template-columns: 1fr; } }
+  .cs-card { background: #fff; border: 1px solid var(--color-border); border-radius: 12px; padding: 1.375rem; }
+  .cs-card-warn { border-top: 2px solid #e8a04a; }
+  .cs-card-num   { font-size: 1.1rem; font-weight: 700; color: var(--color-brown); margin-bottom: 0.5rem; }
+  .cs-card-title { font-size: 0.9375rem; font-weight: 700; color: var(--color-navy); margin-bottom: 0.4rem; line-height: 1.35; }
+  .cs-card-desc  { font-size: 0.875rem; color: var(--color-text-muted); line-height: 1.65; }
+
+  /* ─── As-Is flow ───────────────────────────────────────────────── */
+  .cs-asis-flow {
+    background: #fff; border: 1px solid var(--color-border);
+    border-radius: 16px; overflow: hidden;
+  }
+  .cs-asis-step {
+    display: flex; align-items: flex-start; gap: 0.875rem;
+    padding: 0.875rem 1.25rem; border-top: 1px solid var(--color-border);
+  }
+  .cs-asis-step:first-child { border-top: none; }
+  .cs-asis-num {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: color-mix(in srgb, #d9534f 10%, white);
+    font-size: 0.7rem; font-weight: 700; color: #a93226;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .cs-asis-action { font-size: 0.875rem; font-weight: 600; color: var(--color-navy); line-height: 1.35; }
+  .cs-asis-feel { font-size: 0.78rem; color: #c0392b; margin-top: 0.25rem; line-height: 1.4; font-style: italic; }
+
+  /* ─── Abandonment callout ──────────────────────────────────────── */
+  .cs-abandonment-callout {
+    display: flex; gap: 1rem; align-items: flex-start;
+    background: color-mix(in srgb, #d9534f 8%, white);
+    border: 1px solid color-mix(in srgb, #d9534f 25%, transparent);
+    border-left: 3px solid #d9534f;
+    border-radius: 0 12px 12px 0;
+    padding: 1.25rem 1.5rem;
+  }
+  .cs-abandonment-icon { font-size: 1.25rem; flex-shrink: 0; margin-top: 2px; }
+  .cs-abandonment-title { font-size: 0.875rem; font-weight: 700; color: #a93226; margin-bottom: 0.4rem; }
+  .cs-abandonment-text { font-size: 0.875rem; color: var(--color-text); line-height: 1.7; }
+
+  /* ─── Big stats ────────────────────────────────────────────────── */
+  .cs-stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-border); border: 1px solid var(--color-border); border-radius: 16px; overflow: hidden; }
+  @media (max-width: 640px) { .cs-stats-row { grid-template-columns: repeat(2, 1fr); } }
+  .cs-big-stat { background: #fff; padding: 1.5rem; }
+  .cs-big-num  { font-family: var(--font-display); font-size: 2.25rem; color: var(--color-navy); font-weight: 400; line-height: 1; margin-bottom: 0.5rem; }
+  .cs-big-desc { font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.55; }
+
+  /* ─── Insight row ──────────────────────────────────────────────── */
+  .cs-insight-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  @media (max-width: 640px) { .cs-insight-row { grid-template-columns: 1fr; } }
+  .cs-insight-card { border-left: 3px solid var(--color-lime); padding: 1rem 1rem 1rem 1.25rem; background: var(--color-bg-card); border-radius: 0 10px 10px 0; }
+  .cs-insight-rank  { font-size: 0.68rem; font-weight: 800; color: var(--color-lime); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.4rem; }
+  .cs-insight-title { font-size: 0.9375rem; font-weight: 700; color: var(--color-navy); margin-bottom: 0.3rem; line-height: 1.3; }
+  .cs-insight-sub   { font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.55; }
+
+  /* ─── Secondary research cards ─────────────────────────────────── */
+  .cs-secondary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 640px) { .cs-secondary-grid { grid-template-columns: 1fr; } }
+  .cs-secondary-card { background: #fff; border: 1px solid var(--color-border); border-radius: 14px; padding: 1.375rem; }
+  .cs-secondary-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+  .cs-secondary-source { font-size: 0.875rem; font-weight: 700; color: var(--color-navy); }
+  .cs-secondary-type { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); background: var(--color-bg); padding: 0.25rem 0.625rem; border-radius: 100px; border: 1px solid var(--color-border); }
+  .cs-secondary-stats { display: flex; flex-direction: column; gap: 0.75rem; }
+  .cs-sec-stat { display: flex; align-items: baseline; gap: 0.75rem; }
+  .cs-sec-num { font-family: var(--font-display); font-size: 1.5rem; color: var(--color-navy); font-weight: 400; min-width: 3.25rem; line-height: 1; }
+  .cs-sec-desc { font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.45; }
+  .cs-secondary-desc { font-size: 0.875rem; color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem; }
+  .cs-secondary-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .cs-sec-tag { font-size: 0.7rem; font-weight: 600; color: var(--color-brown); background: color-mix(in srgb, var(--color-brown) 8%, transparent); border: 1px solid color-mix(in srgb, var(--color-brown) 20%, transparent); padding: 0.2rem 0.625rem; border-radius: 100px; }
+
+  /* ─── Consolidation ────────────────────────────────────────────── */
+  .cs-consolidation {
+    background: color-mix(in srgb, var(--color-lime) 8%, white);
+    border: 1px solid color-mix(in srgb, var(--color-lime) 30%, transparent);
+    border-radius: 14px; padding: 1.5rem 1.75rem;
+  }
+  .cs-consolidation-eyebrow { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.14em; color: color-mix(in srgb, var(--color-lime) 60%, var(--color-navy)); margin-bottom: 0.5rem; }
+  .cs-consolidation-text { font-size: 0.9375rem; color: var(--color-navy); line-height: 1.8; font-style: italic; }
+
+  /* ─── Hipóteses ────────────────────────────────────────────────── */
+  .cs-hypothesis { border-radius: 12px; padding: 1.25rem 1.5rem; }
+  .cs-hypothesis-primary  { background: var(--color-navy); }
+  .cs-hypothesis-secondary { background: #fff; border: 1px solid var(--color-border); }
+  .cs-hyp-secondary-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  @media (max-width: 560px) { .cs-hyp-secondary-grid { grid-template-columns: 1fr; } }
+  .cs-hyp-tag { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.6rem; }
+  .cs-hypothesis-primary  .cs-hyp-tag  { color: var(--color-lime); }
+  .cs-hypothesis-secondary .cs-hyp-tag { color: var(--color-brown); }
+  .cs-hyp-text { font-size: 0.9rem; line-height: 1.7; }
+  .cs-hypothesis-primary  .cs-hyp-text { color: rgba(245,243,237,0.82); }
+  .cs-hypothesis-secondary .cs-hyp-text { color: var(--color-text); }
+
+  /* ─── Personas ─────────────────────────────────────────────────── */
+  .cs-personas-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  @media (max-width: 700px) { .cs-personas-grid { grid-template-columns: 1fr; } }
+  .cs-persona-card { background: #fff; border: 1px solid var(--color-border); border-radius: 16px; padding: 1.75rem; }
+  .cs-persona-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+  .cs-persona-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--color-navy); color: var(--color-lime); font-weight: 800; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .cs-persona-avatar-2 { background: var(--color-brown); color: #fff; }
+  .cs-persona-name { font-size: 0.95rem; font-weight: 700; color: var(--color-navy); }
+  .cs-persona-tags { font-size: 0.72rem; color: var(--color-text-muted); margin-top: 2px; }
+  .cs-persona-quote { border-left: 2px solid var(--color-lime); padding: 0.75rem 1rem; background: color-mix(in srgb, var(--color-lime) 5%, transparent); border-radius: 0 8px 8px 0; margin-bottom: 1.25rem; font-size: 0.875rem; color: var(--color-navy); font-style: italic; line-height: 1.65; }
+  .cs-persona-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .cs-persona-section { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-brown); margin-bottom: 0.5rem; }
+  .cs-persona-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.35rem; }
+  .cs-persona-list li { font-size: 0.82rem; color: var(--color-text-muted); line-height: 1.5; padding-left: 0.75rem; position: relative; }
+  .cs-persona-list li::before { content: '·'; position: absolute; left: 0; color: var(--color-text-muted); }
+  .cs-persona-list-red li::before  { color: #d9534f; }
+  .cs-persona-list-green li::before { color: var(--color-lime); }
+
+  /* ─── MVP boxes ────────────────────────────────────────────────── */
+  .cs-mvp-box { border-radius: 12px; padding: 1rem 1.25rem; }
+  .cs-mvp-in       { background: color-mix(in srgb, var(--color-lime) 10%, transparent); border: 1px solid color-mix(in srgb, var(--color-lime) 40%, transparent); }
+  .cs-mvp-validate { background: color-mix(in srgb, #f0a500 8%, transparent); border: 1px solid color-mix(in srgb, #f0a500 35%, transparent); }
+  .cs-mvp-out      { background: var(--color-bg-card); border: 1px solid var(--color-border); }
+  .cs-mvp-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: 0.5rem; }
+  .cs-mvp-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.3rem; }
+  .cs-mvp-list li { font-size: 0.85rem; color: var(--color-text); line-height: 1.5; padding-left: 0.875rem; position: relative; }
+  .cs-mvp-list li::before { content: '–'; position: absolute; left: 0; color: var(--color-text-muted); }
+
+  /* ─── Delivery ─────────────────────────────────────────────────── */
+  .cs-delivery-card {
+    background: var(--color-navy); border-radius: 20px; padding: 2.5rem;
+  }
+  .cs-delivery-badge {
+    display: inline-block; font-size: 0.62rem; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    background: rgba(240,165,0,0.18); color: #f0a500;
+    border: 1px solid rgba(240,165,0,0.35);
+    padding: 0.25rem 0.75rem; border-radius: 100px;
+    margin-bottom: 1.125rem;
+  }
+  .cs-delivery-title { font-family: var(--font-display); font-size: 1.5rem; color: var(--color-bg); margin-bottom: 0.875rem; line-height: 1.25; }
+  .cs-delivery-text { font-size: 0.9375rem; color: rgba(245,243,237,0.75); line-height: 1.8; margin-bottom: 1.75rem; }
+  .cs-prototype-btn {
+    display: inline-flex; align-items: center; gap: 0.625rem;
+    background: var(--color-lime); color: var(--color-navy);
+    font-size: 0.875rem; font-weight: 700;
+    padding: 0.75rem 1.5rem; border-radius: 100px;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .cs-prototype-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+
+  .cs-delivery-notes { display: flex; flex-direction: column; gap: 0.875rem; }
+  .cs-delivery-note {
+    display: flex; gap: 0.75rem; align-items: flex-start;
+    font-size: 0.875rem; color: var(--color-text-muted); line-height: 1.7;
+    padding: 0.875rem 1rem;
+    background: var(--color-bg-card); border: 1px solid var(--color-border);
+    border-radius: 10px;
+  }
+  .cs-note-icon { color: var(--color-lime); font-size: 0.75rem; margin-top: 3px; flex-shrink: 0; }
+
+  /* ─── CTA Final ────────────────────────────────────────────────── */
+  .cs-cta-final {
+    text-align: center;
+    padding: 3rem 1.5rem 5rem;
+    background: var(--color-bg);
+  }
+  .cs-cta-label {
+    font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.16em; color: var(--color-text-muted);
+    margin-bottom: 1.25rem;
+  }
+  .cs-prototype-btn-large {
+    display: inline-flex; align-items: center; gap: 0.75rem;
+    background: var(--color-lime); color: var(--color-navy);
+    font-size: 1rem; font-weight: 700;
+    padding: 1rem 2.25rem; border-radius: 100px;
+    text-decoration: none;
+    box-shadow: 0 4px 24px rgba(184,212,48,0.35);
+    transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+  }
+  .cs-prototype-btn-large:hover {
+    opacity: 0.9; transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(184,212,48,0.45);
+  }
+</style>

@@ -1,0 +1,81 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  entry: CollectionEntry<"cases">;
+}
+
+const { entry } = Astro.props;
+const { title, categories, cover, desafio, solucao, metrics } = entry.data;
+const href = `/cases/${entry.id}`;
+---
+
+<a
+  href={href}
+  class="fade-up group relative flex flex-col bg-bg-card rounded-2xl overflow-hidden border border-border transition-all duration-300 ease-out hover:-translate-y-[5px] hover:shadow-[0_8px_30px_rgba(30,54,87,0.12)] focus-visible:outline-2 focus-visible:outline-navy focus-visible:outline-offset-2"
+  aria-label={`Ver case: ${title}`}
+>
+  <!-- Cover 3:2 -->
+  <div class="relative overflow-hidden bg-navy/10" style="aspect-ratio: 3/2;">
+    <img
+      src={cover}
+      alt=""
+      aria-hidden="true"
+      loading="lazy"
+      decoding="async"
+      width="600"
+      height="400"
+      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+    />
+  </div>
+
+  <!-- Body -->
+  <div class="flex flex-col flex-1 p-5 pb-4">
+    <!-- Tags -->
+    <div class="flex flex-wrap gap-1.5 mb-3">
+      {categories.map((cat) => (
+        <span class="text-[0.58rem] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full bg-navy/8 border border-navy/15 text-navy/70">
+          {cat}
+        </span>
+      ))}
+    </div>
+
+    <h3 class="font-sans font-bold text-[0.95rem] leading-snug text-text mb-4">
+      {title}
+    </h3>
+
+    <p class="text-[0.6rem] font-bold tracking-[0.12em] uppercase text-navy mb-1">
+      Desafio
+    </p>
+    <p class="text-[0.8rem] text-text-muted leading-snug mb-3">{desafio}</p>
+
+    <p class="text-[0.6rem] font-bold tracking-[0.12em] uppercase text-navy mb-1">
+      Solução
+    </p>
+    <p class="text-[0.8rem] text-text-muted leading-snug mb-4">{solucao}</p>
+
+    <!-- Metrics -->
+    <div class="mt-auto flex gap-0 border-t border-border pt-4">
+      {
+        metrics.map((m, i) => (
+          <div
+            class={`flex-1 min-w-0 ${i > 0 ? "pl-3 border-l border-border ml-3" : ""}`}
+          >
+            <p class="font-bold text-navy text-[1rem] leading-none mb-0.5">
+              {m.value}
+            </p>
+            <p class="text-[0.62rem] text-text-muted leading-snug">{m.label}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- CTA arrow -->
+  <div
+    aria-hidden="true"
+    class="absolute bottom-4 right-4 w-9 h-9 rounded-full bg-navy text-lime flex items-center justify-center text-sm font-bold transition-transform duration-300 group-hover:translate-x-1"
+  >
+    →
+  </div>
+</a>

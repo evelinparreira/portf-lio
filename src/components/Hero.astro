@@ -1,0 +1,95 @@
+---
+import { bio } from "../data/about";
+---
+
+<section
+  id="hero"
+  class="pt-[72px] pb-10 bg-bg"
+  aria-label="Apresentação"
+>
+  <div class="max-w-[900px] mx-auto px-10 py-5 flex flex-col items-center text-center">
+
+    <!-- Profile photo -->
+    <div class="relative mb-8 fade-up">
+      <img
+        src="/photos/evelin.jpg"
+        alt="Foto de Evelin Parreira"
+        id="hero-photo"
+        class="w-40 h-40 rounded-full object-cover border-[5px] border-white shadow-[0_8px_30px_rgba(26,35,50,0.12)]"
+        style="background: linear-gradient(135deg, #D4C4B0 0%, #B8A99A 100%);"
+        loading="eager"
+        decoding="async"
+        width="160"
+        height="160"
+      />
+      <!-- Fallback shown until photo loads -->
+      <div
+        id="hero-photo-fallback"
+        class="absolute inset-0 rounded-full"
+        style="background: linear-gradient(135deg, #D4C4B0 0%, #B8A99A 100%);"
+        aria-hidden="true"
+      ></div>
+    </div>
+
+    <!-- Name + title -->
+    <div class="fade-up">
+      <h1
+        class="font-display italic text-navy mb-4"
+        style="font-size: 52px; font-weight: 400; letter-spacing: -1px; line-height: 1.1;"
+      >
+        Evelin Parreira
+      </h1>
+      <p class="text-text-muted mb-6" style="font-size: 18px; line-height: 1.5; letter-spacing: 0.5px;">
+        <span class="hero-highlight">Product Owner</span> · <span class="hero-highlight">APM</span> · <span class="hero-highlight">Product Manager</span>
+      </p>
+    </div>
+
+    <!-- Bio -->
+    <p class="text-text-muted leading-relaxed mb-12 fade-up" style="max-width: 680px; font-size: 16px; line-height: 1.8;">
+      {bio}
+    </p>
+
+    <!-- Stats -->
+    <div class="flex justify-center gap-20 mb-14 fade-up">
+      <div class="text-center">
+        <div class="font-display text-navy" style="font-size: 48px; font-weight: 400; line-height: 1; margin-bottom: 8px;">40+</div>
+        <div class="text-text-muted uppercase" style="font-size: 11px; letter-spacing: 1.5px;">Soluções</div>
+      </div>
+      <div class="self-stretch" style="width: 1px; background: rgba(26,35,50,0.15);"></div>
+      <div class="text-center">
+        <div class="font-display text-navy" style="font-size: 48px; font-weight: 400; line-height: 1; margin-bottom: 8px;">3k+</div>
+        <div class="text-text-muted uppercase" style="font-size: 11px; letter-spacing: 1.5px;">Pessoas impactadas</div>
+      </div>
+    </div>
+
+    <!-- Experience grid -->
+    <div class="experiences-grid fade-up w-full" style="max-width: 1160px; margin-top: 56px;">
+      <div class="exp-card">
+        <p class="exp-number">01 — Estratégia</p>
+        <h3 class="exp-title">Estratégia de Produto</h3>
+        <p class="exp-items">Discovery · Pesquisa · Priorização · Roadmap · IA</p>
+      </div>
+      <div class="exp-card">
+        <p class="exp-number">02 — Design</p>
+        <h3 class="exp-title">Design &amp; Experimentação</h3>
+        <p class="exp-items">Jornadas · Fluxos · Prototipação com IA · Validação</p>
+      </div>
+      <div class="exp-card">
+        <p class="exp-number">03 — Performance</p>
+        <h3 class="exp-title">Gestão &amp; Performance</h3>
+        <p class="exp-items">KPIs · Dados · Backlog · Agile · Melhoria contínua</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const photo = document.getElementById("hero-photo") as HTMLImageElement | null;
+  const fallback = document.getElementById("hero-photo-fallback");
+  if (photo && fallback) {
+    const hide = () => { fallback.style.display = "none"; };
+    if (photo.complete && photo.naturalWidth > 0) hide();
+    else photo.addEventListener("load", hide);
+  }
+</script>

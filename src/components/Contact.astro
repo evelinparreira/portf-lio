@@ -1,0 +1,68 @@
+---
+import { email, linkedin } from "../data/about";
+---
+
+<section
+  id="contato"
+  class="py-24 bg-bg"
+  aria-labelledby="contact-title"
+>
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- Big navy card -->
+    <div class="relative bg-navy rounded-3xl px-8 py-16 sm:px-16 overflow-hidden">
+
+      <!-- Decorative circles -->
+      <div
+        class="absolute -top-16 -right-16 w-64 h-64 rounded-full border-[40px] border-lime/10"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="absolute -bottom-20 -left-20 w-80 h-80 rounded-full border-[50px] border-brown/20"
+        aria-hidden="true"
+      ></div>
+
+      <!-- Content -->
+      <div class="relative z-10 max-w-xl">
+        <p class="text-xs font-semibold tracking-widest uppercase text-lime/60 mb-4" aria-hidden="true">
+          Contato
+        </p>
+        <h2 id="contact-title" class="font-display text-4xl lg:text-5xl text-bg mb-6 leading-tight">
+          Vamos <em class="italic text-lime not-italic">conversar?</em>
+        </h2>
+        <p class="text-bg/70 text-base mb-10 leading-relaxed">
+          Estou aberta a conversas sobre oportunidades, parcerias e projetos desafiadores.
+        </p>
+
+        <!-- Links -->
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a
+            href={`mailto:${email}`}
+            class="flex items-center gap-3 px-6 py-4 bg-bg/10 hover:bg-bg/20 rounded-2xl transition-colors group border border-bg/10"
+          >
+            <span class="text-2xl" aria-hidden="true">✉</span>
+            <div>
+              <p class="text-xs text-bg/50 uppercase tracking-wider mb-0.5">E-mail</p>
+              <p class="text-sm font-medium text-bg group-hover:text-lime transition-colors">{email}</p>
+            </div>
+          </a>
+
+          <a
+            href={linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-3 px-6 py-4 bg-bg/10 hover:bg-bg/20 rounded-2xl transition-colors group border border-bg/10"
+          >
+            <span class="text-2xl" aria-hidden="true">in</span>
+            <div>
+              <p class="text-xs text-bg/50 uppercase tracking-wider mb-0.5">LinkedIn</p>
+              <p class="text-sm font-medium text-bg group-hover:text-lime transition-colors">
+                linkedin.com/in/evelin-parreira
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

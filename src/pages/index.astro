@@ -1,0 +1,114 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Hero from "../components/Hero.astro";
+import Timeline from "../components/Timeline.astro";
+import CaseCard from "../components/CaseCard.astro";
+import Footer from "../components/Footer.astro";
+
+const cases = (
+  await getCollection("cases", ({ data }) => !data.draft)
+).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout
+  title="Evelin Parreira — Product Owner · APM · Product Manager"
+  description="Portfólio de Evelin Parreira, Product Owner com 5+ anos liderando produtos internos de experiência do colaborador em uma fintech."
+>
+  <Nav />
+  <Hero />
+  <Timeline />
+
+  <!-- Cases -->
+  <section
+    id="cases"
+    class="py-24 bg-bg-card border-y border-border"
+    aria-labelledby="cases-title"
+  >
+    <div class="max-w-7xl mx-auto px-6">
+      <p
+        class="text-xs font-semibold tracking-widest uppercase text-red-accent mb-3"
+        aria-hidden="true"
+      >
+        Projetos
+      </p>
+      <h2
+        id="cases-title"
+        class="font-display text-4xl lg:text-5xl text-navy mb-12"
+      >
+        Cases
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {cases.map((entry) => <CaseCard entry={entry} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Cases de Estudo (Lab) -->
+  <section class="py-20 bg-bg" aria-labelledby="lab-title">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+        <div>
+          <p class="text-xs font-semibold tracking-widest uppercase text-red-accent mb-3" aria-hidden="true">
+            Lab
+          </p>
+          <h2 id="lab-title" class="font-display text-4xl lg:text-5xl text-navy">
+            Cases de Estudo
+          </h2>
+        </div>
+        <p class="text-text-muted text-sm max-w-xs leading-relaxed">
+          Estudos aprofundados de design e produto, desenvolvidos na pós-graduação.
+        </p>
+      </div>
+
+      <a
+        href="/case-estudos/emanapay"
+        class="group flex flex-col sm:flex-row items-stretch gap-0 rounded-2xl overflow-hidden border border-border hover:border-navy/30 transition-all duration-300 hover:shadow-lg bg-bg-card"
+        aria-label="Ver case EmanaPay"
+      >
+        <div class="bg-navy sm:w-72 flex-shrink-0 px-8 py-10 flex flex-col justify-between">
+          <div>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="text-[0.58rem] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full border border-lime/30 text-lime/80">UX Research</span>
+              <span class="text-[0.58rem] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full border border-lime/30 text-lime/80">MVP</span>
+              <span class="text-[0.58rem] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full border border-lime/30 text-lime/80">Fintech</span>
+            </div>
+            <p class="font-display text-2xl text-bg leading-tight">EmanaPay</p>
+            <p class="text-bg/55 text-sm mt-1">Redesenho do Espaço Digital</p>
+          </div>
+          <div class="mt-8 flex items-center gap-2 text-lime text-sm font-semibold group-hover:gap-3 transition-all duration-200">
+            Ver estudo
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="flex-1 px-8 py-10 flex flex-col justify-center gap-6 sm:border-l border-border">
+          <p class="text-text text-base leading-relaxed max-w-xl">
+            Como reduzir fricção e aumentar adoção do app financeiro da Natura para consultoras,
+            através de discovery estruturado em 3 fases: pesquisa, personas e estratégia de MVP.
+          </p>
+          <div class="flex flex-wrap gap-6">
+            <div>
+              <p class="font-bold text-navy text-2xl leading-none">3</p>
+              <p class="text-text-muted text-xs uppercase tracking-wide mt-0.5">Fases do projeto</p>
+            </div>
+            <div>
+              <p class="font-bold text-navy text-2xl leading-none">87,5%</p>
+              <p class="text-text-muted text-xs uppercase tracking-wide mt-0.5">Já confundiram origem do dinheiro</p>
+            </div>
+            <div>
+              <p class="font-bold text-navy text-2xl leading-none">2</p>
+              <p class="text-text-muted text-xs uppercase tracking-wide mt-0.5">Personas mapeadas</p>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

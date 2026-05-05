@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evelin Parreira — Product Owner · APM · Product Manager</title>
+  <meta name="description" content="Portfólio de Evelin Parreira, Product Owner com 5+ anos liderando produtos internos de experiência do colaborador em uma fintech.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Reset ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; }
+
+    /* ── Design tokens ──────────────────────────────────── */
+    :root {
+      --navy:       #1e3657;
+      --navy-dark:  #14263f;
+      --lime:       #d3ff00;
+      --brown:      #7a5c3e;
+      --red-accent: #e03030;
+      --bg:         #f5f4f0;
+      --bg-card:    #ffffff;
+      --text:       #111111;
+      --muted:      #666666;
+      --border:     #e0ddd6;
+      --sans:       'Inter', system-ui, sans-serif;
+      --display:    'DM Serif Display', serif;
+      --ease:       cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* ── Base ───────────────────────────────────────────── */
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ────────────────────────────────────────────── */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 50;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      transition: background 0.3s, box-shadow 0.3s, border-color 0.3s;
+    }
+
+    #nav.scrolled {
+      background: rgba(245, 244, 240, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 1px 0 var(--border);
+    }
+
+    .nav-inner {
+      max-width: 80rem;
+      margin: 0 auto;
+      width: 100%;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--display);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--navy);
+      letter-spacing: -0.01em;
+      transition: color 0.2s;
+    }
+    .nav-logo:hover { color: var(--brown); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--navy); }
+
+    .nav-cta {
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 8px 18px;
+      background: var(--navy);
+      color: var(--bg);
+      border-radius: 9999px;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--navy-dark); }
+
+    /* Hamburger */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      margin-right: -8px;
+    }
+    .nav-toggle span {
+      display: block;
+      height: 2px;
+      background: var(--navy);
+      border-radius: 2px;
+      transition: transform 0.3s, width 0.3s;
+    }
+    .nav-toggle span:nth-child(1) { width: 24px; }
+    .nav-toggle span:nth-child(2) { width: 24px; }
+    .nav-toggle span:nth-child(3) { width: 16px; }
+
+    /* Drawer */
+    .nav-drawer {
+      position: fixed;
+      inset: 72px 0 0 0;
+      z-index: 49;
+      background: rgba(245, 244, 240, 0.97);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: none;
+      flex-direction: column;
+      padding: 32px 24px;
+      gap: 0;
+      transform: translateX(100%);
+      transition: transform 0.3s var(--ease);
+    }
+    .nav-drawer.open { transform: translateX(0); }
+
+    .nav-drawer a {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--navy);
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      display: block;
+    }
+
+    .nav-drawer .drawer-cta {
+      margin-top: 20px;
+      display: block;
+      text-align: center;
+      font-size: 1.125rem;
+      font-weight: 600;
+      padding: 14px 20px;
+      background: var(--navy);
+      color: var(--bg);
+      border-radius: 9999px;
+    }
+
+    /* ── HERO ───────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      padding-top: 72px;
+      display: flex;
+      align-items: center;
+      background: var(--bg);
+    }
+
+    .hero-inner {
+      max-width: 80rem;
+      margin: 0 auto;
+      width: 100%;
+      padding: 64px 24px;
+      display: grid;
+      grid-template-columns: 55fr 45fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    /* Badge */
+    .hero-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--red-accent);
+      border: 1px solid rgba(224, 48, 48, 0.4);
+      border-radius: 9999px;
+      padding: 6px 16px;
+      margin-bottom: 24px;
+    }
+
+    /* Headline */
+    .hero-h1 {
+      font-size: clamp(2.25rem, 5vw, 3.75rem);
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--navy);
+      margin-bottom: 20px;
+    }
+    .hero-h1 em {
+      font-family: var(--display);
+      font-style: italic;
+      color: var(--brown);
+    }
+
+    /* Bio */
+    .hero-bio {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 38rem;
+      margin-bottom: 36px;
+    }
+
+    /* CTAs */
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 16px; }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: var(--navy);
+      color: var(--bg);
+      font-family: var(--sans);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      border-radius: 9999px;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--navy-dark); }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border: 2px solid var(--navy);
+      color: var(--navy);
+      font-family: var(--sans);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      border-radius: 9999px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { background: var(--navy); color: var(--bg); }
+
+    /* Photo card (desktop only) */
+    .hero-photo-col {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero-blob-lime {
+      position: absolute;
+      top: -32px; right: -32px;
+      width: 256px; height: 256px;
+      border-radius: 9999px;
+      background: var(--lime);
+      opacity: 0.2;
+      filter: blur(48px);
+      pointer-events: none;
+    }
+
+    .hero-blob-brown {
+      position: absolute;
+      bottom: -32px; left: -32px;
+      width: 192px; height: 192px;
+      border-radius: 9999px;
+      background: var(--brown);
+      opacity: 0.2;
+      filter: blur(48px);
+      pointer-events: none;
+    }
+
+    .hero-photo-card {
+      position: relative;
+      z-index: 1;
+      width: 320px;
+      aspect-ratio: 3/4;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-photo-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-photo-fallback {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+      display: flex;
+      align-items: flex-end;
+      padding: 24px;
+    }
+    .hero-photo-fallback p {
+      color: rgba(245, 244, 240, 0.5);
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    /* ── SOBRE MIM ──────────────────────────────────────── */
+    #sobre {
+      padding: 96px 0;
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-inner {
+      max-width: 80rem;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--red-accent);
+      margin-bottom: 12px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+      align-items: start;
+    }
+
+    /* Col 1 */
+    .about-title {
+      font-family: var(--display);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 400;
+      color: var(--navy);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    .about-bio {
+      font-size: 0.9375rem;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+
+    /* Col 2: Stats */
+    .stats-col {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .stat-item {
+      border-left: 2px solid var(--navy);
+      padding-left: 20px;
+    }
+
+    .stat-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+
+    /* Col 3: Skills */
+    .vivencias-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 20px;
+    }
+
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      display: inline-block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      transition: border-color 0.2s, color 0.2s;
+      cursor: default;
+    }
+    .pill:hover { border-color: var(--navy); color: var(--navy); }
+
+    /* ── Responsive ─────────────────────────────────────── */
+    /* ── JORNADA ────────────────────────────────────── */
+    #jornada {
+      padding: 96px 0;
+      background: var(--bg);
+    }
+
+    .jornada-inner {
+      max-width: 80rem;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Track */
+    .timeline-track {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 24px;
+      margin: 0 -24px;
+      padding-left: 24px;
+      padding-right: 24px;
+      scroll-behavior: smooth;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .timeline-track::-webkit-scrollbar { display: none; }
+
+    .tl-card {
+      flex-shrink: 0;
+      scroll-snap-align: start;
+      width: 288px;
+      border-radius: 16px;
+      padding: 24px;
+      cursor: pointer;
+      transition: background 0.3s, box-shadow 0.3s;
+      outline: none;
+    }
+    .tl-card:focus-visible { box-shadow: 0 0 0 3px var(--navy); }
+
+    .tl-card.tl-inactive {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+    }
+    .tl-card.tl-active {
+      background: var(--navy);
+      border: none;
+    }
+
+    .tl-year {
+      font-size: 3.75rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 16px;
+      user-select: none;
+      transition: color 0.3s;
+    }
+    .tl-card.tl-active   .tl-year { color: var(--lime); }
+    .tl-card.tl-inactive .tl-year { color: rgba(30, 54, 87, 0.2); }
+
+    .tl-role {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+      transition: color 0.3s;
+    }
+    .tl-card.tl-active   .tl-role { color: var(--bg); }
+    .tl-card.tl-inactive .tl-role { color: var(--navy); }
+
+    .tl-sub {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+      transition: color 0.3s;
+    }
+    .tl-card.tl-active   .tl-sub { color: var(--lime); }
+    .tl-card.tl-inactive .tl-sub { color: var(--muted); }
+
+    .tl-desc {
+      font-size: 0.875rem;
+      line-height: 1.6;
+      transition: color 0.3s;
+    }
+    .tl-card.tl-active   .tl-desc { color: rgba(245, 244, 240, 0.75); }
+    .tl-card.tl-inactive .tl-desc { color: var(--muted); }
+
+    /* Arrows + dots */
+    .tl-controls {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .tl-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 9999px;
+      border: 2px solid var(--navy);
+      background: none;
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.2s, color 0.2s;
+    }
+    .tl-btn:hover:not(:disabled) { background: var(--navy); color: var(--bg); }
+    .tl-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+    .tl-dots {
+      display: flex;
+      gap: 8px;
+      margin-left: 8px;
+    }
+
+    .tl-dot {
+      height: 8px;
+      border-radius: 9999px;
+      background: var(--border);
+      width: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, width 0.3s;
+      padding: 0;
+    }
+    .tl-dot.tl-dot-active { background: var(--navy); width: 20px; }
+
+    /* ── CASES ──────────────────────────────────────── */
+    #cases {
+      padding: 96px 0;
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cases-inner {
+      max-width: 80rem;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    /* Case card */
+    .case-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--bg);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+      color: var(--text);
+      text-decoration: none;
+    }
+    .case-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(30, 54, 87, 0.12);
+    }
+    .case-card:focus-visible {
+      outline: 2px solid var(--navy);
+      outline-offset: 2px;
+    }
+
+    /* Cover */
+    .case-cover-wrap {
+      position: relative;
+      overflow: hidden;
+      background: rgba(30, 54, 87, 0.1);
+      aspect-ratio: 3 / 2;
+    }
+    .case-cover-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s var(--ease);
+    }
+    .case-card:hover .case-cover-wrap img { transform: scale(1.05); }
+
+    .case-badge {
+      position: absolute;
+      top: 12px; left: 12px;
+      background: var(--navy);
+      color: var(--lime);
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 4px 12px;
+      border-radius: 9999px;
+    }
+
+    /* Body */
+    .case-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .case-title {
+      font-family: var(--display);
+      font-size: 1.125rem;
+      font-weight: 400;
+      color: var(--navy);
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+
+    .case-desafio, .case-solucao {
+      font-size: 0.8125rem;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 6px;
+    }
+
+    .case-meta-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--navy);
+      margin-right: 4px;
+    }
+
+    .case-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .case-metric {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .case-metric-value {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1;
+    }
+
+    .case-metric-label {
+      font-size: 0.6875rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .case-arrow {
+      position: absolute;
+      bottom: 16px; right: 16px;
+      width: 36px; height: 36px;
+      border-radius: 9999px;
+      background: var(--navy);
+      color: var(--lime);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.875rem;
+      font-weight: 700;
+      transition: transform 0.3s;
+    }
+    .case-card:hover .case-arrow { transform: translateX(4px); }
+
+    .case-cover-wrap { position: relative; }
+
+    /* ── CONTATO ────────────────────────────────────── */
+    #contato {
+      padding: 96px 0;
+      background: var(--bg);
+    }
+
+    .contact-inner {
+      max-width: 80rem;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .contact-card {
+      position: relative;
+      background: var(--navy);
+      border-radius: 24px;
+      padding: 64px 64px;
+      overflow: hidden;
+    }
+
+    .contact-ring-1 {
+      position: absolute;
+      top: -64px; right: -64px;
+      width: 256px; height: 256px;
+      border-radius: 9999px;
+      border: 40px solid rgba(211, 255, 0, 0.1);
+      pointer-events: none;
+    }
+    .contact-ring-2 {
+      position: absolute;
+      bottom: -80px; left: -80px;
+      width: 320px; height: 320px;
+      border-radius: 9999px;
+      border: 50px solid rgba(122, 92, 62, 0.2);
+      pointer-events: none;
+    }
+
+    .contact-content {
+      position: relative;
+      z-index: 1;
+      max-width: 36rem;
+    }
+
+    .contact-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(211, 255, 0, 0.6);
+      margin-bottom: 16px;
+    }
+
+    .contact-title {
+      font-family: var(--display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      color: var(--bg);
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+    .contact-title em {
+      color: var(--lime);
+      font-style: italic;
+    }
+
+    .contact-text {
+      font-size: 1rem;
+      color: rgba(245, 244, 240, 0.7);
+      line-height: 1.75;
+      margin-bottom: 40px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 24px;
+      background: rgba(245, 244, 240, 0.1);
+      border: 1px solid rgba(245, 244, 240, 0.1);
+      border-radius: 16px;
+      transition: background 0.2s;
+    }
+    .contact-link:hover { background: rgba(245, 244, 240, 0.2); }
+
+    .contact-link-icon {
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    .contact-link-sublabel {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(245, 244, 240, 0.5);
+      margin-bottom: 2px;
+      display: block;
+    }
+
+    .contact-link-text {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--bg);
+      transition: color 0.2s;
+    }
+    .contact-link:hover .contact-link-text { color: var(--lime); }
+
+    /* ── FOOTER ─────────────────────────────────────── */
+    footer {
+      background: var(--navy-dark);
+      color: var(--bg);
+      padding: 48px 0;
+      border-top: 1px solid rgba(245, 244, 240, 0.1);
+    }
+
+    .footer-inner {
+      max-width: 80rem;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .footer-name {
+      font-family: var(--display);
+      font-size: 1.5rem;
+      color: var(--bg);
+      margin-bottom: 4px;
+    }
+
+    .footer-role {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: rgba(245, 244, 240, 0.5);
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .footer-nav a {
+      font-size: 0.875rem;
+      color: rgba(245, 244, 240, 0.6);
+      transition: color 0.2s;
+    }
+    .footer-nav a:hover { color: var(--bg); }
+
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-contact a {
+      font-size: 0.875rem;
+      color: rgba(245, 244, 240, 0.7);
+      transition: color 0.2s;
+    }
+    .footer-contact a:hover { color: var(--lime); }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: rgba(245, 244, 240, 0.3);
+      margin-top: 8px;
+    }
+
+    @media (min-width: 640px) {
+      .footer-inner {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+      }
+      .footer-nav { align-items: flex-start; }
+      .footer-contact { align-items: flex-end; }
+      .footer-name-col { text-align: left; }
+    }
+
+    /* ── Responsive ─────────────────────────────────── */
+    @media (max-width: 1023px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        padding: 48px 24px;
+      }
+      .hero-photo-col { display: none; }
+      .hero-bio { max-width: 100%; }
+
+      .cases-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 767px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+      .nav-drawer { display: flex; }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      #sobre { padding: 64px 0; }
+
+      .cases-grid { grid-template-columns: 1fr; }
+      #jornada { padding: 64px 0; }
+      #cases { padding: 64px 0; }
+      #contato { padding: 64px 0; }
+
+      .contact-card { padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════ NAV ══ -->
+  <header id="nav" aria-label="Navegação principal">
+    <div class="nav-inner">
+
+      <a href="/" class="nav-logo" aria-label="Evelin Parreira — início">EP.</a>
+
+      <!-- Desktop links -->
+      <nav class="nav-links">
+        <a href="#sobre">Sobre</a>
+        <a href="#jornada">Jornada</a>
+        <a href="#cases">Cases</a>
+        <a href="#contato" class="nav-cta">Contato</a>
+      </nav>
+
+      <!-- Mobile hamburger -->
+      <button
+        class="nav-toggle"
+        id="nav-toggle"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+        aria-controls="nav-drawer"
+      >
+        <span id="bar1"></span>
+        <span id="bar2"></span>
+        <span id="bar3"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile drawer -->
+  <div id="nav-drawer" class="nav-drawer" aria-hidden="true">
+    <a href="#sobre"   data-close>Sobre</a>
+    <a href="#jornada" data-close>Jornada</a>
+    <a href="#cases"   data-close>Cases</a>
+    <a href="#contato" class="drawer-cta" data-close>Contato</a>
+  </div>
+
+  <!-- ════════════════════════════════════════ HERO ══ -->
+  <section id="hero" aria-label="Apresentação">
+    <div class="hero-inner">
+
+      <!-- Left: text -->
+      <div>
+        <span class="hero-badge">Product Owner · APM · Product Manager</span>
+
+        <h1 class="hero-h1">
+          Olá, sou <em>Evelin</em> Parreira.
+        </h1>
+
+        <p class="hero-bio">
+          Atuo há 5 anos liderando produtos internos voltados à experiência do colaborador
+          e à cultura organizacional em uma fintech, com abordagem end-to-end de produto,
+          do discovery à evolução contínua, com foco em geração de valor, tomada de decisão
+          orientada por dados e construção de soluções escaláveis, mesmo em cenários de
+          alta complexidade e restrição de recursos.
+        </p>
+
+        <div class="hero-ctas">
+          <a href="#cases" class="btn-primary">Ver cases <span aria-hidden="true">→</span></a>
+          <a href="mailto:evelin.parreira@outlook.com.br" class="btn-outline">Falar comigo</a>
+        </div>
+      </div>
+
+      <!-- Right: photo (desktop only) -->
+      <div class="hero-photo-col" aria-hidden="true">
+        <div class="hero-blob-lime"></div>
+        <div class="hero-blob-brown"></div>
+        <div class="hero-photo-card">
+          <img
+            src="/photos/evelin.jpg"
+            alt="Foto de Evelin Parreira"
+            id="hero-photo"
+            loading="eager"
+            width="320"
+            height="427"
+          />
+          <div class="hero-photo-fallback" id="hero-fallback">
+            <p>foto em breve</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════ SOBRE MIM ══ -->
+  <section id="sobre" aria-labelledby="about-title">
+    <div class="about-inner">
+
+      <p class="section-label" aria-hidden="true">Sobre mim</p>
+
+      <div class="about-grid">
+
+        <!-- Col 1: Título + Bio -->
+        <div>
+          <h2 id="about-title" class="about-title">Sobre mim</h2>
+          <p class="about-bio">
+            Atuo há 5 anos liderando produtos internos voltados à experiência do colaborador
+            e à cultura organizacional em uma fintech, com abordagem end-to-end de produto,
+            do discovery à evolução contínua, com foco em geração de valor, tomada de decisão
+            orientada por dados e construção de soluções escaláveis, mesmo em cenários de
+            alta complexidade e restrição de recursos.
+          </p>
+        </div>
+
+        <!-- Col 2: Stats -->
+        <div class="stats-col" aria-label="Números">
+          <div class="stat-item">
+            <p class="stat-value">5+</p>
+            <p class="stat-label">anos de experiência</p>
+          </div>
+          <div class="stat-item">
+            <p class="stat-value">40+</p>
+            <p class="stat-label">projetos liderados</p>
+          </div>
+          <div class="stat-item">
+            <p class="stat-value">3k+</p>
+            <p class="stat-label">pessoas impactadas</p>
+          </div>
+        </div>
+
+        <!-- Col 3: Vivências / Skills pills -->
+        <div>
+          <p class="vivencias-label">Vivências</p>
+          <div class="pills" role="list" aria-label="Habilidades e vivências">
+            <span class="pill" role="listitem">Discovery de produto</span>
+            <span class="pill" role="listitem">OKRs</span>
+            <span class="pill" role="listitem">Gestão de stakeholders</span>
+            <span class="pill" role="listitem">Design sprint</span>
+            <span class="pill" role="listitem">Dados e métricas</span>
+            <span class="pill" role="listitem">Cultura organizacional</span>
+            <span class="pill" role="listitem">Experiência do colaborador</span>
+            <span class="pill" role="listitem">Gestão de projetos</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════ JORNADA ══ -->
+  <section id="jornada" aria-labelledby="jornada-title">
+    <div class="jornada-inner">
+
+      <p class="section-label" aria-hidden="true">Trajetória</p>
+      <h2 id="jornada-title" style="font-family:var(--display);font-size:clamp(2rem,4vw,3rem);font-weight:400;color:var(--navy);margin-bottom:48px;">Minha Jornada</h2>
+
+      <div class="timeline-track" id="tl-track" role="list" aria-label="Linha do tempo">
+
+        <article class="tl-card tl-active" data-idx="0" role="listitem" tabindex="0" aria-current="true">
+          <p class="tl-year" aria-hidden="true">2022</p>
+          <h3 class="tl-role">Especialista em DHO</h3>
+          <p class="tl-sub">2022 · Fintech</p>
+          <p class="tl-desc">Liderança de produtos voltados ao Desenvolvimento Humano e Organizacional, com foco em cultura, clima e experiência do colaborador. Condução de projetos end-to-end com alto impacto organizacional.</p>
+        </article>
+
+        <article class="tl-card tl-inactive" data-idx="1" role="listitem" tabindex="0" aria-current="false">
+          <p class="tl-year" aria-hidden="true">2021</p>
+          <h3 class="tl-role">Especialista em T&amp;D</h3>
+          <p class="tl-sub">2021 · Fintech</p>
+          <p class="tl-desc">Gestão do portfólio de Treinamento e Desenvolvimento, criação de trilhas de aprendizagem e soluções educacionais escaláveis. Implementação de LMS e desenvolvimento de produtos educacionais digitais.</p>
+        </article>
+
+        <article class="tl-card tl-inactive" data-idx="2" role="listitem" tabindex="0" aria-current="false">
+          <p class="tl-year" aria-hidden="true">2019</p>
+          <h3 class="tl-role">Analista de Antifraude</h3>
+          <p class="tl-sub">2019 · Fintech</p>
+          <p class="tl-desc">Análise e monitoramento de operações para prevenção de fraudes. Desenvolvimento de processos e fluxos de investigação, contribuindo para a segurança e integridade das operações da empresa.</p>
+        </article>
+
+        <article class="tl-card tl-inactive" data-idx="3" role="listitem" tabindex="0" aria-current="false">
+          <p class="tl-year" aria-hidden="true">2018</p>
+          <h3 class="tl-role">Analista de Atendimento</h3>
+          <p class="tl-sub">2018 · Fintech</p>
+          <p class="tl-desc">Atendimento ao cliente com foco em resolução de problemas e experiência do usuário. Identificação de padrões de demanda e proposição de melhorias nos processos de suporte.</p>
+        </article>
+
+      </div>
+
+      <div class="tl-controls">
+        <button class="tl-btn" id="tl-prev" aria-label="Card anterior" disabled>←</button>
+        <button class="tl-btn" id="tl-next" aria-label="Próximo card">→</button>
+        <div class="tl-dots" role="tablist" aria-label="Indicadores">
+          <button class="tl-dot tl-dot-active" data-dot="0" role="tab" aria-selected="true"  aria-label="2022"></button>
+          <button class="tl-dot"               data-dot="1" role="tab" aria-selected="false" aria-label="2021"></button>
+          <button class="tl-dot"               data-dot="2" role="tab" aria-selected="false" aria-label="2019"></button>
+          <button class="tl-dot"               data-dot="3" role="tab" aria-selected="false" aria-label="2018"></button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════ CASES ══ -->
+  <section id="cases" aria-labelledby="cases-title">
+    <div class="cases-inner">
+
+      <p class="section-label" aria-hidden="true">Projetos</p>
+      <h2 id="cases-title" style="font-family:var(--display);font-size:clamp(2rem,4vw,3rem);font-weight:400;color:var(--navy);margin-bottom:48px;">Cases</h2>
+
+      <div class="cases-grid">
+
+        <!-- Case 1 -->
+        <a href="#" class="case-card" aria-label="Ver case: Evolução da pesquisa de clima">
+          <div class="case-cover-wrap">
+            <img src="/covers/gente-conexao.png" alt="" aria-hidden="true" loading="lazy" width="600" height="400">
+            <span class="case-badge">Produto</span>
+            <span class="case-arrow" aria-hidden="true">→</span>
+          </div>
+          <div class="case-body">
+            <h3 class="case-title">Evolução da pesquisa de clima</h3>
+            <p class="case-desafio"><span class="case-meta-label">Desafio</span>Pesquisa com 19% de adesão, falhas operacionais e baixa percepção de valor.</p>
+            <p class="case-solucao"><span class="case-meta-label">Solução</span>Evolução contínua do produto em três frentes: redução de fricção, experiência e engajamento.</p>
+            <div class="case-metrics">
+              <div class="case-metric"><span class="case-metric-value">80%</span><span class="case-metric-label">Pico de adesão (era 19%)</span></div>
+              <div class="case-metric"><span class="case-metric-value">+237%</span><span class="case-metric-label">Volume de respostas</span></div>
+              <div class="case-metric"><span class="case-metric-value">-65%</span><span class="case-metric-label">Custo por resposta</span></div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Case 2 -->
+        <a href="#" class="case-card" aria-label="Ver case: Solução escalável de aprendizagem para produtos bancários">
+          <div class="case-cover-wrap">
+            <img src="/covers/produtos-bancarios.png" alt="" aria-hidden="true" loading="lazy" width="600" height="400">
+            <span class="case-badge">Fintech</span>
+            <span class="case-arrow" aria-hidden="true">→</span>
+          </div>
+          <div class="case-body">
+            <h3 class="case-title">Solução escalável de aprendizagem para produtos bancários</h3>
+            <p class="case-desafio"><span class="case-meta-label">Desafio</span>Disseminar conhecimento crítico sobre produtos bancários com baixo engajamento e restrição orçamentária.</p>
+            <p class="case-solucao"><span class="case-meta-label">Solução</span>Solução híbrida com bootcamp gamificado de 10 semanas e trilha assíncrona para toda a companhia.</p>
+            <div class="case-metrics">
+              <div class="case-metric"><span class="case-metric-value">78%</span><span class="case-metric-label">Adesão síncrona</span></div>
+              <div class="case-metric"><span class="case-metric-value">80%</span><span class="case-metric-label">Engajamento nos encontros</span></div>
+              <div class="case-metric"><span class="case-metric-value">R$9,9k</span><span class="case-metric-label">vs R$1,7M do mercado (↓99%)</span></div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Case 3 -->
+        <a href="#" class="case-card" aria-label="Ver case: Produto Educacional Jovem Aprendiz: Primeiros Passos">
+          <div class="case-cover-wrap">
+            <img src="/covers/primeiros-passos.png" alt="" aria-hidden="true" loading="lazy" width="600" height="400">
+            <span class="case-badge">Educação Corporativa</span>
+            <span class="case-arrow" aria-hidden="true">→</span>
+          </div>
+          <div class="case-body">
+            <h3 class="case-title">Produto Educacional Jovem Aprendiz: Primeiros Passos</h3>
+            <p class="case-desafio"><span class="case-meta-label">Desafio</span>Alta rotatividade no programa de jovens aprendizes e dificuldade em sustentar a cota obrigatória.</p>
+            <p class="case-solucao"><span class="case-meta-label">Solução</span>Programa Primeiros Passos: jornada estruturada com trilha educacional, gamificação, tutoria e formatura.</p>
+            <div class="case-metrics">
+              <div class="case-metric"><span class="case-metric-value">+140</span><span class="case-metric-label">Jovens desenvolvidos</span></div>
+              <div class="case-metric"><span class="case-metric-value">80%</span><span class="case-metric-label">Conclusão do programa</span></div>
+              <div class="case-metric"><span class="case-metric-value">35%</span><span class="case-metric-label">Retenção (↑50% vs. histórico)</span></div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Case 4 -->
+        <a href="#" class="case-card" aria-label="Ver case: Transformação do modelo comercial para venda consultiva">
+          <div class="case-cover-wrap">
+            <img src="/covers/placeholder-venda.png" alt="" aria-hidden="true" loading="lazy" width="600" height="400">
+            <span class="case-badge">Comercial</span>
+            <span class="case-arrow" aria-hidden="true">→</span>
+          </div>
+          <div class="case-body">
+            <h3 class="case-title">Transformação do modelo comercial para venda consultiva</h3>
+            <p class="case-desafio"><span class="case-meta-label">Desafio</span>Gap de perfil no time comercial e necessidade urgente de migração para abordagem consultiva.</p>
+            <p class="case-solucao"><span class="case-meta-label">Solução</span>Jornada com assessment de perfil, roleplay, playbook e metodologia Challenger Sale.</p>
+            <div class="case-metrics">
+              <div class="case-metric"><span class="case-metric-value">+40%</span><span class="case-metric-label">Performance individual</span></div>
+              <div class="case-metric"><span class="case-metric-value">NPS 100</span><span class="case-metric-label">Satisfação dos participantes</span></div>
+              <div class="case-metric"><span class="case-metric-value">1 mês</span><span class="case-metric-label">Para atingir ROI</span></div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Case 5 -->
+        <a href="#" class="case-card" aria-label="Ver case: Construção de um ecossistema de aprendizagem corporativa">
+          <div class="case-cover-wrap">
+            <img src="/covers/placeholder-ecossistema.png" alt="" aria-hidden="true" loading="lazy" width="600" height="400">
+            <span class="case-badge">Estratégia</span>
+            <span class="case-arrow" aria-hidden="true">→</span>
+          </div>
+          <div class="case-body">
+            <h3 class="case-title">Construção de um ecossistema de aprendizagem corporativa</h3>
+            <p class="case-desafio"><span class="case-meta-label">Desafio</span>Ausência de estrutura formal de aprendizagem, baixo engajamento e apenas uma pessoa responsável pela área.</p>
+            <p class="case-solucao"><span class="case-meta-label">Solução</span>Ecossistema em camadas: jornadas estruturadas, programas, EAD, iniciativas de cultura e parcerias externas.</p>
+            <div class="case-metrics">
+              <div class="case-metric"><span class="case-metric-value">+3k</span><span class="case-metric-label">Pessoas impactadas</span></div>
+              <div class="case-metric"><span class="case-metric-value">~115</span><span class="case-metric-label">Participantes voluntários</span></div>
+              <div class="case-metric"><span class="case-metric-value">+5</span><span class="case-metric-label">Programas criados</span></div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Case 6 -->
+        <a href="#" class="case-card" aria-label="Ver case: Plataforma de aprendizagem de baixo custo">
+          <div class="case-cover-wrap">
+            <img src="/covers/atualiza.png" alt="" aria-hidden="true" loading="lazy" width="600" height="400">
+            <span class="case-badge">Educação Corporativa</span>
+            <span class="case-arrow" aria-hidden="true">→</span>
+          </div>
+          <div class="case-body">
+            <h3 class="case-title">Plataforma de aprendizagem de baixo custo para continuidade operacional</h3>
+            <p class="case-desafio"><span class="case-meta-label">Desafio</span>Descontinuidade do LMS por restrição orçamentária, impactando treinamentos obrigatórios.</p>
+            <p class="case-solucao"><span class="case-meta-label">Solução</span>Biblioteca de aprendizagem no SharePoint utilizando recursos já disponíveis internamente.</p>
+            <div class="case-metrics">
+              <div class="case-metric"><span class="case-metric-value">+141</span><span class="case-metric-label">Conteúdos disponibilizados</span></div>
+              <div class="case-metric"><span class="case-metric-value">+100h</span><span class="case-metric-label">De conteúdo acessível</span></div>
+              <div class="case-metric"><span class="case-metric-value">R$0</span><span class="case-metric-label">Custo adicional</span></div>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════ CONTATO ══ -->
+  <section id="contato" aria-labelledby="contato-title">
+    <div class="contact-inner">
+      <div class="contact-card">
+        <div class="contact-ring-1" aria-hidden="true"></div>
+        <div class="contact-ring-2" aria-hidden="true"></div>
+        <div class="contact-content">
+          <p class="contact-label" aria-hidden="true">Contato</p>
+          <h2 id="contato-title" class="contact-title">Vamos <em>conversar?</em></h2>
+          <p class="contact-text">Estou aberta a conversas sobre oportunidades, parcerias e projetos desafiadores.</p>
+          <div class="contact-links">
+            <a href="mailto:evelin.parreira@outlook.com.br" class="contact-link">
+              <span class="contact-link-icon" aria-hidden="true">✉</span>
+              <div>
+                <span class="contact-link-sublabel">E-mail</span>
+                <span class="contact-link-text">evelin.parreira@outlook.com.br</span>
+              </div>
+            </a>
+            <a href="https://www.linkedin.com/in/evelin-parreira-4a9b8516b/" target="_blank" rel="noopener noreferrer" class="contact-link">
+              <span class="contact-link-icon" aria-hidden="true">in</span>
+              <div>
+                <span class="contact-link-sublabel">LinkedIn</span>
+                <span class="contact-link-text">linkedin.com/in/evelin-parreira</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════ FOOTER ══ -->
+  <footer aria-label="Rodapé">
+    <div class="footer-inner">
+      <div class="footer-name-col" style="text-align:center;">
+        <p class="footer-name">Evelin Parreira</p>
+        <p class="footer-role">Product Owner · APM · Product Manager</p>
+      </div>
+      <nav aria-label="Links rápidos do rodapé">
+        <ul class="footer-nav">
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#jornada">Jornada</a></li>
+          <li><a href="#cases">Cases</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+      <div class="footer-contact">
+        <a href="mailto:evelin.parreira@outlook.com.br">evelin.parreira@outlook.com.br</a>
+        <a href="https://www.linkedin.com/in/evelin-parreira-4a9b8516b/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <p class="footer-copy">© 2026 Evelin Parreira</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ════════════════════════════════════════ JS ══ -->
+  <script>
+    /* Nav: scroll state */
+    var nav = document.getElementById('nav');
+    function updateNav() {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+
+    /* Nav: mobile hamburger */
+    var toggle  = document.getElementById('nav-toggle');
+    var drawer  = document.getElementById('nav-drawer');
+    var bar1    = document.getElementById('bar1');
+    var bar3    = document.getElementById('bar3');
+    var isOpen  = false;
+
+    function setOpen(val) {
+      isOpen = val;
+      toggle.setAttribute('aria-expanded', String(val));
+      drawer.setAttribute('aria-hidden', String(!val));
+      drawer.classList.toggle('open', val);
+      bar1.style.transform = val ? 'rotate(45deg) translate(5px, 5px)' : '';
+      bar3.style.width     = val ? '24px' : '';
+      bar3.style.transform = val ? 'rotate(-45deg) translate(5px, -5px)' : '';
+    }
+
+    toggle.addEventListener('click', function () { setOpen(!isOpen); });
+    document.querySelectorAll('[data-close]').forEach(function (el) {
+      el.addEventListener('click', function () { setOpen(false); });
+    });
+
+    /* Timeline */
+    var tlCards = Array.from(document.querySelectorAll('.tl-card'));
+    var tlDots  = Array.from(document.querySelectorAll('[data-dot]'));
+    var tlPrev  = document.getElementById('tl-prev');
+    var tlNext  = document.getElementById('tl-next');
+    var tlActive = 0;
+
+    function tlActivate(idx) {
+      tlCards.forEach(function(c, i) {
+        c.classList.toggle('tl-active',   i === idx);
+        c.classList.toggle('tl-inactive', i !== idx);
+        c.setAttribute('aria-current', String(i === idx));
+      });
+      tlDots.forEach(function(d, i) {
+        d.classList.toggle('tl-dot-active', i === idx);
+        d.setAttribute('aria-selected', String(i === idx));
+      });
+      tlPrev.disabled = idx === 0;
+      tlNext.disabled = idx === tlCards.length - 1;
+      tlActive = idx;
+      tlCards[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+
+    tlCards.forEach(function(card, i) {
+      card.addEventListener('click', function() { tlActivate(i); });
+      card.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tlActivate(i); }
+      });
+    });
+    tlDots.forEach(function(dot, i) {
+      dot.addEventListener('click', function() { tlActivate(i); });
+    });
+    tlPrev.addEventListener('click', function() { if (tlActive > 0) tlActivate(tlActive - 1); });
+    tlNext.addEventListener('click', function() { if (tlActive < tlCards.length - 1) tlActivate(tlActive + 1); });
+
+    /* Hero: hide photo fallback when image loads */
+    var heroPhoto    = document.getElementById('hero-photo');
+    var heroFallback = document.getElementById('hero-fallback');
+    if (heroPhoto && heroFallback) {
+      function hideFallback() { heroFallback.style.display = 'none'; }
+      if (heroPhoto.complete && heroPhoto.naturalWidth > 0) {
+        hideFallback();
+      } else {
+        heroPhoto.addEventListener('load', hideFallback);
+      }
+    }
+  </script>
+
+</body>
+</html>

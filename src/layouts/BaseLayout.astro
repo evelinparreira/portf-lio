@@ -1,0 +1,89 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title = "Evelin Parreira — Product Owner",
+  description = "Portfólio de Evelin Parreira, Product Owner com 5+ anos liderando produtos internos em uma fintech.",
+  ogImage = "/og-image.png",
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
+const ogImageAbsolute = new URL(ogImage, Astro.site ?? Astro.url.origin).href;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageAbsolute} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Evelin Parreira" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageAbsolute} />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+
+    <!-- Enable JS class immediately — no-JS fallback: .fade-up elements stay visible -->
+    <script is:inline>document.documentElement.classList.add('js');</script>
+  </head>
+  <body class="bg-bg text-text font-sans antialiased">
+    <slot />
+  </body>
+
+  <!-- Fade-up IntersectionObserver (progressive enhancement) -->
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target as HTMLElement;
+          el.classList.add("is-visible");
+
+          // After transition ends, remove fade-up classes so hover works at normal 300ms speed
+          el.addEventListener(
+            "transitionend",
+            (e) => {
+              if ((e as TransitionEvent).propertyName !== "opacity") return;
+              el.classList.remove("fade-up", "is-visible");
+            },
+            { once: false }
+          );
+
+          observer.unobserve(el);
+        });
+      },
+      { threshold: 0.08, rootMargin: "0px 0px -32px 0px" }
+    );
+
+    document.querySelectorAll(".fade-up").forEach((el) => observer.observe(el));
+  </script>
+</html>
