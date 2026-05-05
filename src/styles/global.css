@@ -258,5 +258,4 @@ html.js .fade-up.is-visible {
 
 @media (max-width: 768px) {
   .experiences-grid { grid-template-columns: 1fr; }
-  .nav-logo-eve { font-size: 24px; letter-spacing: 2px; }
-}
+  .nav-logo-eve { font-size: 24px; letter-spacing: 

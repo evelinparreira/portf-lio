@@ -128,6 +128,7 @@ import Footer from "../../components/Footer.astro";
           não é suficiente para garantir adoção.
         </p>
 
+        <div class="cs-market-table-wrap">
         <div class="cs-market-table">
           <div class="cs-market-header">
             <div></div>
@@ -165,6 +166,7 @@ import Footer from "../../components/Footer.astro";
             <div class="cs-market-cell cs-cell-no">—</div>
             <div class="cs-market-cell cs-cell-no">—</div>
           </div>
+        </div>
         </div>
 
         <div class="cs-market-decision mt-6">
@@ -677,7 +679,7 @@ import Footer from "../../components/Footer.astro";
   /* ─── Labels ───────────────────────────────────────────────────── */
   .cs-label {
     font-family: var(--font-display);
-    font-size: 1.75rem; color: var(--color-navy);
+    font-size: clamp(1.35rem, 5vw, 1.75rem); color: var(--color-navy);
     letter-spacing: -0.025em; line-height: 1.15;
     margin-bottom: 1.25rem;
     position: relative; padding-top: 1.125rem;
@@ -721,8 +723,9 @@ import Footer from "../../components/Footer.astro";
   .cs-stat-label { font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.4; }
 
   /* ─── Market comparison table ──────────────────────────────────── */
+  .cs-market-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 14px; border: 1px solid var(--color-border); }
   .cs-market-table {
-    border: 1px solid var(--color-border); border-radius: 14px; overflow: hidden;
+    min-width: 480px; width: 100%;
     font-size: 0.875rem;
   }
   .cs-market-header {
@@ -739,10 +742,6 @@ import Footer from "../../components/Footer.astro";
   .cs-cell-loss     { color: #b03a2e; background: rgba(200,80,60,0.08); }
   .cs-cell-exclusive { color: var(--color-navy); background: rgba(184,212,48,0.25); font-weight: 700; }
   .cs-cell-no       { color: var(--color-border); }
-  @media (max-width: 600px) {
-    .cs-market-header, .cs-market-row { grid-template-columns: 1fr repeat(3, 80px); }
-    .cs-market-col-label, .cs-market-cell { font-size: 0.68rem; }
-  }
   .cs-market-decision {
     background: var(--color-navy); border-radius: 12px; padding: 1.25rem 1.5rem;
   }
@@ -870,6 +869,7 @@ import Footer from "../../components/Footer.astro";
   .cs-personas-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
   @media (max-width: 700px) { .cs-personas-grid { grid-template-columns: 1fr; } }
   .cs-persona-card { background: #fff; border: 1px solid var(--color-border); border-radius: 16px; padding: 1.75rem; }
+  @media (max-width: 480px) { .cs-persona-card { padding: 1.25rem; } }
   .cs-persona-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
   .cs-persona-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--color-navy); color: var(--color-lime); font-weight: 800; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .cs-persona-avatar-2 { background: var(--color-brown); color: #fff; }
@@ -877,6 +877,7 @@ import Footer from "../../components/Footer.astro";
   .cs-persona-tags { font-size: 0.72rem; color: var(--color-text-muted); margin-top: 2px; }
   .cs-persona-quote { border-left: 2px solid var(--color-lime); padding: 0.75rem 1rem; background: color-mix(in srgb, var(--color-lime) 5%, transparent); border-radius: 0 8px 8px 0; margin-bottom: 1.25rem; font-size: 0.875rem; color: var(--color-navy); font-style: italic; line-height: 1.65; }
   .cs-persona-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 480px) { .cs-persona-cols { grid-template-columns: 1fr; } }
   .cs-persona-section { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-brown); margin-bottom: 0.5rem; }
   .cs-persona-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.35rem; }
   .cs-persona-list li { font-size: 0.82rem; color: var(--color-text-muted); line-height: 1.5; padding-left: 0.75rem; position: relative; }
@@ -898,6 +899,7 @@ import Footer from "../../components/Footer.astro";
   .cs-delivery-card {
     background: var(--color-navy); border-radius: 20px; padding: 2.5rem;
   }
+  @media (max-width: 480px) { .cs-delivery-card { padding: 1.5rem; } }
   .cs-delivery-badge {
     display: inline-block; font-size: 0.62rem; font-weight: 800;
     text-transform: uppercase; letter-spacing: 0.14em;
@@ -950,6 +952,4 @@ import Footer from "../../components/Footer.astro";
   }
   .cs-prototype-btn-large:hover {
     opacity: 0.9; transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(184,212,48,0.45);
-  }
-</style>
+ 

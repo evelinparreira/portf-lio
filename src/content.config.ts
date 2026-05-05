@@ -35,48 +35,4 @@ const cases = defineCollection({
     solutionIntro: z.string().optional(),
     solutionItems: z.array(
       z.object({ title: z.string(), description: z.string() })
-    ).optional(),
-    solutionDecisions: z.array(z.string()).optional(),
-
-    // 04b — Iteração (primeiros-passos)
-    iterationItems: z.array(z.string()).optional(),
-
-    // 05 — Evolução em ondas (ecossistema)
-    evolutionWaves: z.array(
-      z.object({ year: z.string(), description: z.string() })
-    ).optional(),
-
-    // 05 — Minha atuação
-    myRoleText: z.string().optional(),
-    myRoleItems: z.array(z.string()).optional(),
-
-    // 06 — Impacto
-    impactCategories: z.array(
-      z.object({ label: z.string(), items: z.array(z.string()) })
-    ).optional(),
-    impactText: z.string().optional(),
-
-    // Imagens do case (screenshots, diagramas, fotos)
-    images: z.array(
-      z.object({
-        src: z.string(),
-        alt: z.string(),
-        caption: z.string().optional(),
-        span: z.enum(["full", "half"]).default("half"),
-      })
-    ).optional(),
-
-    // Links externos
-    externalLinks: z.array(
-      z.object({
-        title: z.string(),
-        url: z.string().url(),
-        type: z.enum(["video", "article", "page"]).optional(),
-      })
-    ).optional(),
-
-    draft: z.boolean().default(false),
-  }),
-});
-
-export const collections = { cases };
+    ).optional(

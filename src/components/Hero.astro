@@ -7,7 +7,7 @@ import { bio } from "../data/about";
   class="pt-[72px] pb-10 bg-bg"
   aria-label="Apresentação"
 >
-  <div class="max-w-[900px] mx-auto px-10 py-5 flex flex-col items-center text-center">
+  <div class="max-w-[900px] mx-auto px-5 sm:px-10 py-5 flex flex-col items-center text-center">
 
     <!-- Profile photo -->
     <div class="relative mb-8 fade-up">
@@ -15,7 +15,7 @@ import { bio } from "../data/about";
         src="/photos/evelin.jpg"
         alt="Foto de Evelin Parreira"
         id="hero-photo"
-        class="w-40 h-40 rounded-full object-cover border-[5px] border-white shadow-[0_8px_30px_rgba(26,35,50,0.12)]"
+        class="w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover border-[5px] border-white shadow-[0_8px_30px_rgba(26,35,50,0.12)]"
         style="background: linear-gradient(135deg, #D4C4B0 0%, #B8A99A 100%);"
         loading="eager"
         decoding="async"
@@ -35,11 +35,11 @@ import { bio } from "../data/about";
     <div class="fade-up">
       <h1
         class="font-display italic text-navy mb-4"
-        style="font-size: 52px; font-weight: 400; letter-spacing: -1px; line-height: 1.1;"
+        style="font-size: clamp(34px, 8vw, 52px); font-weight: 400; letter-spacing: -1px; line-height: 1.1;"
       >
         Evelin Parreira
       </h1>
-      <p class="text-text-muted mb-6" style="font-size: 18px; line-height: 1.5; letter-spacing: 0.5px;">
+      <p class="text-text-muted mb-6" style="font-size: clamp(15px, 4vw, 18px); line-height: 1.5; letter-spacing: 0.5px;">
         <span class="hero-highlight">Product Owner</span> · <span class="hero-highlight">APM</span> · <span class="hero-highlight">Product Manager</span>
       </p>
     </div>
@@ -50,14 +50,14 @@ import { bio } from "../data/about";
     </p>
 
     <!-- Stats -->
-    <div class="flex justify-center gap-20 mb-14 fade-up">
+    <div class="flex justify-center gap-10 sm:gap-20 mb-14 fade-up">
       <div class="text-center">
-        <div class="font-display text-navy" style="font-size: 48px; font-weight: 400; line-height: 1; margin-bottom: 8px;">40+</div>
+        <div class="font-display text-navy" style="font-size: clamp(36px, 10vw, 48px); font-weight: 400; line-height: 1; margin-bottom: 8px;">40+</div>
         <div class="text-text-muted uppercase" style="font-size: 11px; letter-spacing: 1.5px;">Soluções</div>
       </div>
       <div class="self-stretch" style="width: 1px; background: rgba(26,35,50,0.15);"></div>
       <div class="text-center">
-        <div class="font-display text-navy" style="font-size: 48px; font-weight: 400; line-height: 1; margin-bottom: 8px;">3k+</div>
+        <div class="font-display text-navy" style="font-size: clamp(36px, 10vw, 48px); font-weight: 400; line-height: 1; margin-bottom: 8px;">3k+</div>
         <div class="text-text-muted uppercase" style="font-size: 11px; letter-spacing: 1.5px;">Pessoas impactadas</div>
       </div>
     </div>
@@ -89,7 +89,4 @@ import { bio } from "../data/about";
   const fallback = document.getElementById("hero-photo-fallback");
   if (photo && fallback) {
     const hide = () => { fallback.style.display = "none"; };
-    if (photo.complete && photo.naturalWidth > 0) hide();
-    else photo.addEventListener("load", hide);
-  }
-</script>
+    if (pho

@@ -8,11 +8,12 @@ import { linkedin } from "../data/about";
   style="height: 72px;"
   aria-label="Navegação principal"
 >
-  <div class="max-w-7xl mx-auto w-full px-10 flex items-center justify-between">
+  <div class="max-w-7xl mx-auto w-full px-5 md:px-10 flex items-center justify-between">
 
     <a href="/" class="nav-logo-eve" aria-label="Evelin Parreira — início">EVE</a>
 
-    <nav class="flex items-center gap-12" aria-label="Menu principal">
+    <!-- Desktop nav -->
+    <nav class="hidden md:flex items-center gap-12" aria-label="Menu principal">
       <a href="#sobre" class="nav-link">Sobre</a>
       <a href="#jornada" class="nav-link">Jornada</a>
       <a href="#cases" class="nav-link">Cases</a>
@@ -34,18 +35,13 @@ import { linkedin } from "../data/about";
       </a>
     </nav>
 
-  </div>
-</header>
-
-<script>
-  const nav = document.getElementById("nav")!;
-  function updateNav() {
-    if (window.scrollY > 40) {
-      nav.classList.add("bg-bg/90", "backdrop-blur-md", "shadow-sm", "border-b", "border-border");
-    } else {
-      nav.classList.remove("bg-bg/90", "backdrop-blur-md", "shadow-sm", "border-b", "border-border");
-    }
-  }
-  window.addEventListener("scroll", updateNav, { passive: true });
-  updateNav();
-</script>
+    <!-- Mobile hamburger -->
+    <button
+      id="nav-hamburger"
+      class="md:hidden flex flex-col justify-center items-center w-9 h-9 gap-1.5"
+      aria-label="Abrir menu"
+      aria-expanded="false"
+    >
+      <span class="ham-line block w-6 h-0.5 bg-navy transition-all duration-300"></span>
+      <span class="ham-line block w-6 h-0.5 bg-navy transition-all duration-300"></span>
+      <span cl
